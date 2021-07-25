@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .notification {
+    @apply rounded-lg pointer-events-auto ring-1 ring-black ring-opacity-5;
+  }
+
+  .scrolled {
+    @apply bg-white shadow-md border-none;
+  }
+
+  .btn-focus {
+    @apply focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-200 transition-all;
+  }
+
+  .btn-text {
+    @apply p-2 whitespace-nowrap rounded-md text-lg font-medium;
+  }
+
+  .btn-text-color {
+    @apply text-gray-500 hover:text-gray-900;
+  }
+
+  .btn-text-top {
+    @apply text-gray-50 hover:text-gray-200;
+  }
+
+  .btn-primary {
+    @apply btn-focus whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium;
+  }
+
+  .btn-primary-color {
+    @apply text-white bg-gray-900 hover:bg-gray-800;
+  }
+
+  .btn-primary-top {
+    @apply text-gray-900 bg-gray-50 hover:bg-gray-200;
+  }
+
+  .btn-secondary {
+    @apply btn-focus whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-800 bg-gray-100 hover:bg-gray-200;
+  }
+
+  .btn-disabled {
+    @apply whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-gray-300 shadow-sm rounded-md text-gray-700 bg-gray-50 cursor-not-allowed;
+  }
+
+  .sm-btn-text {
+    @apply -m-3 p-3 flex items-center hover:bg-gray-50;
+  }
+
+  .sm-btn-text-inner {
+    @apply ml-3 text-base font-medium text-gray-900;
+  }
+
+  .dropdown-arrow {
+    @apply text-gray-400 ml-2 h-5 w-5 group-hover:text-gray-500;
+  }
+
+  .divider {
+    @apply border-b-2 border-gray-800 rounded-md;
+  }
+
+  .input {
+    @apply py-3 px-4 block w-full shadow-sm text-gray-900 focus:ring-gray-900 focus:border-gray-900 border-gray-300 rounded-md;
+  }
+
+  .input-error {
+    @apply ring-red-600 border-red-600 focus:ring-red-600 focus:border-red-600 border-2;
+  }
+
+  .text-error {
+    @apply text-sm text-red-500;
+  }
+
+  .stacked-image {
+    @apply rounded-lg;
+  }
+}
