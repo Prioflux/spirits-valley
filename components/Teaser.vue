@@ -13,7 +13,7 @@
       <div class="relative mt-12 sm:mt-16 lg:mt-24">
         <div class="grid grid-flow-row-dense grid-cols-1  lg:grid-cols-2 lg:gap-8 lg:items-center">
           <div class="lg:col-start-2 lg:ml-20">
-            <h2 class="text-4xl font-extrabold text-gray-900 tracking-tight">
+            <h2 class="text-4xl font-handwriting font-extrabold text-gray-900 tracking-tight">
               {{ blok.title }}
             </h2>
             <p class="mt-3 text-lg text-gray-500">
@@ -40,9 +40,9 @@
           </div>
 
           <div class="relative m-10 lg:mt-0 lg:col-start-1">
-            <img class="stacked-image absolute bottom-0 left-0 transform -translate-x-1/4 lg:-translate-x-1/2" src="https://picsum.photos/537/354" width="500" />
-            <img class="stacked-image relative bottom-0 left-0" src="https://picsum.photos/536/354" alt="Workplace" width="400" />
-            <img class="stacked-image relative -top-12 left-0 transform translate-x-1/2 lg:translated-x-1/4" src="https://picsum.photos/535/354" width="350" />
+            <img class="stacked-image absolute bottom-0 left-0 transform -translate-x-1/4 lg:-translate-x-1/2 shadow-md" :src="$options.filters.transformImage(blok.images[0].image.filename, blok.images[0].dimensions)" :alt="blok.images[0].image.alt" width="500" />
+            <img class="stacked-image relative bottom-0 left-0 shadow-md" :src="$options.filters.transformImage(blok.images[1].image.filename, blok.images[1].dimensions)" :alt="blok.images[1].image.alt" width="400" />
+            <img class="stacked-image relative -top-12 left-0 transform translate-x-1/2 lg:translated-x-1/4 shadow-md" :src="$options.filters.transformImage(blok.images[2].image.filename, blok.images[2].dimensions)" :alt="blok.images[2].image.alt" width="350" />
           </div>
         </div>
       </div>

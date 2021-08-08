@@ -17,7 +17,11 @@ module.exports = {
         gray: colors.warmGray,
       },
       fontFamily: {
-        sans: ['Crimson Pro', 'Montserrat', 'serif'],
+        serif: ['"Crimson Pro"', 'Montserrat', 'serif'],
+        handwriting: ['"Satisfy"', '"Crimson Pro"', 'Montserrat', 'serif']
+      },
+      cursor: {
+        'zoom-in': 'zoom-in'
       }
     },
   },
@@ -26,5 +30,6 @@ module.exports = {
   },
   plugins: [
     require('@tailwindcss/aspect-ratio'),
+    require('@tailwindcss/forms'),
   ],
 }

@@ -21,7 +21,7 @@
       >
         <div class="inline-flex justify-start items-center lg:w-0 lg:flex-1">
           <nuxt-link to="/">
-            <span class="pl-2 uppercase font-bold text-3xl" :class="{'btn-text-top': topOfPage }">
+            <span class="pl-2 font-bold text-4xl font-handwriting" :class="{'btn-text-top': topOfPage }">
               {{ blok.name }}
             </span>
           </nuxt-link>
@@ -39,11 +39,11 @@
           "
         >
 
-          <nuxt-link to="/" class="btn-text btn-focus" :class="{'btn-text-top': topOfPage, 'btn-text-color': !topOfPage }">
+          <nuxt-link to="/tijdlijn" class="btn-text btn-focus" :class="{'btn-text-top': topOfPage, 'btn-text-color': !topOfPage }">
             {{ blok.history }}
           </nuxt-link>
 
-          <nuxt-link to="/" class="btn-text btn-focus" :class="{'btn-text-top': topOfPage, 'btn-text-color': !topOfPage }">
+          <nuxt-link to="/rondleidingen" class="btn-text btn-focus" :class="{'btn-text-top': topOfPage, 'btn-text-color': !topOfPage }">
             {{ blok.tours }}
           </nuxt-link>
 
@@ -52,7 +52,7 @@
           </nuxt-link>
 
           <nuxt-link
-            to="/"
+            to="/contact"
             class="
               btn-primary
             "
@@ -140,7 +140,7 @@
               <nav class="grid grid-cols-1 gap-y-8">
 
                 <nuxt-link
-                  to="/"
+                  to="/tijdlijn"
                   class="-m-3 p-3 flex items-center hover:bg-gray-50"
                 >
                   <BookOpenIcon />
@@ -151,7 +151,7 @@
                 </nuxt-link>
 
                 <nuxt-link
-                  to="/"
+                  to="/rondleidingen"
                   class="-m-3 p-3 flex items-center hover:bg-gray-50"
                 >
                   
@@ -175,7 +175,7 @@
                 </nuxt-link>
 
                 <nuxt-link
-                  to="/"
+                  to="/contact"
                   class="
                     whitespace-nowrap
                     inline-flex

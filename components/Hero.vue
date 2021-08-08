@@ -5,12 +5,11 @@
     <div class="mx-auto h-screen">
       <div class="relative h-screen sm:overflow-hidden">
         <div class="absolute inset-0">
-          
-          <img class="h-screen w-full object-cover" :src="blok.bg_image.filename" :alt="blok.bg_image.alt">
-          <div class="absolute inset-0 bg-gray-600 mix-blend-multiply"></div>
+          <img class="h-screen w-full object-cover" :src="$options.filters.transformImage(blok.bg_image.filename, '1280x0')" :alt="blok.bg_image.alt">
+          <div class="absolute inset-0 bg-indigo-200 mix-blend-multiply"></div>
         </div>
         <div class="relative h-screen px-4 py-32 sm:px-6 sm:py-24 lg:py-40 lg:px-8">
-          <h1 class="text-center text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
+          <h1 class="text-center text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
             <span class="block text-white">{{ blok.baseline }}</span>
             <span class="block text-gray-200">{{ blok.baseline_keyword }}</span>
           </h1>
@@ -19,12 +18,12 @@
           </p>
           <div class="mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center">
             <div class="space-y-4 sm:space-y-0 sm:mx-auto sm:inline-grid sm:grid-cols-2 sm:gap-5">
-              <a href="#" class="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-gray-700 bg-white hover:bg-gray-50 sm:px-8">
+              <nuxt-link to="/contact" href="#" class="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-gray-700 bg-white hover:bg-gray-50 sm:px-8">
                 {{ blok.contact_button }}
-              </a>
-              <a href="#" class="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-gray-500 bg-opacity-60 hover:bg-opacity-70 sm:px-8">
+              </nuxt-link>
+              <nuxt-link to="/tijdlijn" class="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-gray-500 bg-opacity-60 hover:bg-opacity-70 sm:px-8">
                 {{ blok.discover_button }}
-              </a>
+              </nuxt-link>
             </div>
           </div>
         </div>

@@ -1,9 +1,9 @@
 <template>
-  <div v-editable="blok" class="bg-gray-50">
+  <div v-editable="blok" class="bg-gray-100">
     <div class="mx-auto py-12 px-4 max-w-7xl sm:px-6 lg:px-8 lg:py-24">
       <div class="space-y-12 lg:grid lg:grid-cols-3 lg:gap-8 lg:space-y-0 lg:items-start">
-        <div class="space-y-5 sm:space-y-4 lg:sticky lg:top-28">
-          <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">{{ blok.title }}</h2>
+        <div class="space-y-5 sm:space-y-4 lg:sticky lg:top-32">
+          <h2 class="text-3xl font-handwriting font-extrabold tracking-tight sm:text-4xl">{{ blok.title }}</h2>
           <p class="text-xl text-gray-500">{{ blok.description }}</p>
         </div>
         <div class="lg:col-span-2">
@@ -11,7 +11,7 @@
 
             <li v-for="company in blok.companies" :key="company._iud" class="sm:py-8">
               <div class="space-y-4 sm:grid sm:grid-cols-3 sm:items-start sm:gap-6 sm:space-y-0">
-                <div class="aspect-w-3 aspect-h-2 sm:aspect-w-3 sm:aspect-h-3">
+                <div class="bg-white aspect-w-3 aspect-h-2 sm:aspect-w-3 sm:aspect-h-3">
                   <img class="shadow-lg rounded-lg" :src="company.image.filename" :alt="company.image.alt">
                 </div>
                 <div class="sm:col-span-2">
