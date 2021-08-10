@@ -1,4 +1,7 @@
-const { STORYBLOK_KEY } = process.env
+import getMetadata from './utils/metadata'
+
+const meta = getMetadata()
+const { BASE_URL, STORYBLOK_KEY } = process.env
 
 export default {
   // Target: https://go.nuxtjs.dev/config-target
@@ -15,8 +18,14 @@ export default {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' },
+      ...meta,
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+  },
+
+  publicRuntimeConfig: {
+    baseUrl: BASE_URL,
+    storyblokKey: STORYBLOK_KEY,
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -25,6 +34,9 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     { src: '@/plugins/lightbox', mode: 'client' },
+    { src: '@/plugins/datepicker', mode: 'client' },
+    { src: '@/plugins/toast', mode: 'client' },
+    { src: '@/plugins/vuelidate' },
     { src: '@/plugins/imageService' },
   ],
 
@@ -69,7 +81,9 @@ export default {
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {
+    baseURL: BASE_URL,
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
