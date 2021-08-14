@@ -47,7 +47,7 @@
             {{ blok.tours }}
           </nuxt-link>
 
-          <nuxt-link to="/" class="btn-text btn-focus" :class="{'btn-text-top': topOfPage, 'btn-text-color': !topOfPage }">
+          <nuxt-link to="/dagtrips" class="btn-text btn-focus" :class="{'btn-text-top': topOfPage, 'btn-text-color': !topOfPage }">
             {{ blok.trips }}
           </nuxt-link>
 
@@ -163,7 +163,7 @@
                 </nuxt-link>
 
                 <nuxt-link
-                  to="/"
+                  to="/dagtrips"
                   class="-m-3 p-3 flex items-center hover:bg-gray-50"
                 >
                   

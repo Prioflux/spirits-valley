@@ -112,10 +112,16 @@
               <div class="mt-4 grid grid-cols-1 gap-y-4">
                 <div class="flex items-center">
                   <div class="flex items-center h-5">
-                    <input id="tour" v-model="form.tour.bookTour" aria-describedby="tour" name="tour" type="checkbox" class="focus:ring-gray-500 h-4 w-4 text-gray-900 border-gray-300 rounded">
+                    <input
+                      id="tour"
+                      v-model="form.tour.bookTour"
+                      aria-describedby="tour"
+                      name="tour"
+                      type="checkbox"
+                      class="cursor-pointer focus:ring-gray-500 h-4 w-4 text-gray-900 border-gray-300 rounded">
                   </div>
                   <div class="ml-3 text-sm">
-                    <label for="tour" class="block text-sm font-medium text-gray-700">{{ blok.tour_label }}</label>
+                    <label for="tour" class="cursor-pointer block text-sm font-medium text-gray-700">{{ blok.tour_label }}</label>
                   </div>
                 </div>
               </div>
