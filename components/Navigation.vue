@@ -79,7 +79,6 @@
     >
       <div
         class="
-          ring-1 ring-black ring-opacity-5
           divide-y-2 divide-gray-50
         "
       >

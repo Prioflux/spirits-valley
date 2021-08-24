@@ -15,7 +15,7 @@
           <p class="mt-6 max-w-lg mx-auto text-center text-xl text-gray-200 sm:max-w-3xl">
             {{ blok.description }}
           </p>
-          <div class="mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center">
+          <div class="mt-16 mx-auto sm:max-w-none flex justify-center">
             <div class="space-y-4 sm:space-y-0 sm:mx-auto sm:inline-grid sm:grid-cols-1 sm:gap-5">
               <nuxt-link to="/contact" class="btn uppercase p-5 text-xl text-gray-700 bg-white hover:bg-gray-50 sm:px-8">
                 {{ blok.contact_button }}
