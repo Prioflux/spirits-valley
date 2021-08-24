@@ -10,6 +10,10 @@
   .c-container {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
+
+  .btn {
+    @apply transition-all ease-in-out font-bold border border-transparent shadow-sm rounded-md hover:rounded-3xl focus:rounded-3xl hover:bg-gray-100 focus:bg-gray-100 shadow-sm;
+  }
 }
 
 @layer components {
@@ -38,11 +42,11 @@
   }
 
   .btn-primary {
-    @apply btn-focus whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium;
+    @apply btn btn-focus whitespace-nowrap inline-flex items-center justify-center px-4 py-2;
   }
 
   .btn-primary-color {
-    @apply text-white bg-gray-900 hover:bg-gray-800;
+    @apply text-white bg-gray-900 hover:bg-gray-800 focus:bg-gray-800;
   }
 
   .btn-primary-top {
@@ -50,7 +54,7 @@
   }
 
   .btn-secondary {
-    @apply btn-focus whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-800 bg-gray-100 hover:bg-gray-200;
+    @apply btn btn-focus inline-flex items-center px-6 py-3 border border-gray-300 shadow-sm text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50;
   }
 
   .btn-disabled {

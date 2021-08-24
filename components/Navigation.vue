@@ -54,6 +54,7 @@
           <nuxt-link
             to="/contact"
             class="
+              btn
               btn-primary
             "
             :class="{'btn-primary-top': topOfPage, 'btn-primary-color': !topOfPage }"
@@ -177,17 +178,14 @@
                 <nuxt-link
                   to="/contact"
                   class="
+                    btn
                     whitespace-nowrap
                     inline-flex
                     items-center
                     justify-center
                     px-4
                     py-2
-                    border border-transparent
-                    rounded-md
-                    shadow-sm
                     text-base
-                    font-medium
                     text-white
                     bg-gray-900
                     hover:bg-gray-800

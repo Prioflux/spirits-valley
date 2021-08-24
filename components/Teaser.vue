@@ -35,7 +35,7 @@
             </dl>
 
             <div class="mt-5">
-              <nuxt-link to="/" class="btn-primary btn-primary-color">{{ blok.discover_button }}</nuxt-link>
+              <nuxt-link to="/tijdlijn" class="btn btn-primary btn-primary-color">{{ blok.discover_button }}</nuxt-link>
             </div>
           </div>
 

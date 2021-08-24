@@ -48,7 +48,7 @@
                 <div class="rounded-md shadow">
                   <nuxt-link
                     to="/contact"
-                    class="flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-800 hover:bg-gray-900"
+                    class="flex items-center justify-center px-5 py-3 btn-primary uppercase text-lg text-white bg-gray-800 hover:bg-gray-900"
                     aria-describedby="tier-standard">
                     {{ card.contact }}
                   </nuxt-link>
@@ -72,7 +72,7 @@
             <div class="mt-6 rounded-md shadow lg:mt-0 lg:ml-10 lg:flex-shrink-0">
               <nuxt-link
                 to="/rondleidingen"
-                class="flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-gray-900 bg-white hover:bg-gray-50">
+                class="flex items-center justify-center px-5 py-3 btn-primary text-gray-900 bg-white hover:bg-gray-50">
                 {{ blok.teaser_button }}
               </nuxt-link>
             </div>

@@ -22,11 +22,13 @@ module.exports = {
       },
       cursor: {
         'zoom-in': 'zoom-in'
-      }
+      },
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      borderRadius: ['hover', 'focus'],
+    },
   },
   plugins: [
     require('@tailwindcss/aspect-ratio'),

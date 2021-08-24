@@ -7,42 +7,44 @@
 </template>
 
 <script>
-import metadataMixin from '@/mixins/metadataMixin'
-import storyblokBridgeMixin from '@/mixins/storyblokBridgeMixin'
+import metadataMixin from '@/mixins/metadataMixin';
+import storyblokBridgeMixin from '@/mixins/storyblokBridgeMixin';
 
 export default {
   name: 'Index',
   mixins: [metadataMixin, storyblokBridgeMixin],
   asyncData(context) {
     const version =
-      context.query._storyblok || context.isDev ? 'draft' : 'published'
-    
+      context.query._storyblok || context.isDev
+        ? 'draft'
+        : 'published';
+
     return context.app.$storyapi
       .get('cdn/stories/home', {
         version,
         resolve_relations: 'globalReference.reference',
       })
       .then((res) => {
-        return res.data
+        return res.data;
       })
       .catch((res) => {
         if (!res.response) {
           return {
             statusCode: 404,
             message: 'Failed to receive content from api',
-          }
+          };
         } else {
           return {
             statusCode: res.response.status,
             message: res.response.data,
-          }
+          };
         }
-      })
+      });
   },
   data() {
     return {
       story: { content: {} },
-    }
+    };
   },
-}
+};
 </script>

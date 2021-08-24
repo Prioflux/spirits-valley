@@ -44,8 +44,8 @@
                 </span>
               </div>
               <div class="mt-6">
-                <div class="rounded-md shadow">
-                  <nuxt-link to="/contact" class="flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-800 hover:bg-gray-900">
+                <div>
+                  <nuxt-link to="/contact" class="flex items-center justify-center px-5 py-3 btn text-xl uppercase text-white bg-gray-800 hover:bg-gray-900">
                     {{ blok.book_button }}
                   </nuxt-link>
                 </div>

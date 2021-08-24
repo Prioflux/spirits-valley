@@ -25,6 +25,8 @@ const handler = async (event) => {
   <p><b>Aantal bezoekers:</b> ${data.tour.guests}</p>
   <p><b>Gewenste bezoekdatum:</b> ${new Date(data.tour.date).toLocaleDateString('nl')}</p>`
   : '`<p><b>Rondleiding geboekt:</b> Nee</p>`'
+  const bookTourMsg = '<p>Deze datum van bezoek is <b>nog niet definitief</b>, de bezoeker moet nog gecontacteerd worden om deze datum te bevestigen.</p>'
+  const bookTourConfirmation = '<p>Deze datum van bezoek is nog niet definitief, wij zullen u contacteren om deze datum te bevestigen.</p>'
 
   const msg = {
     statusCode: 200,
@@ -35,6 +37,7 @@ const handler = async (event) => {
     html: `<b>Email: </b>${data.email}
     ${phone}
     ${bookTour}
+    ${bookTourMsg}
     <p><b>Verzonden op ${new Date().toLocaleString('nl')}</b></p>
     <br>
     <p style="border-left: 2px solid lightgrey; padding-left:5px; white-space:pre-line;">${
@@ -47,11 +50,12 @@ const handler = async (event) => {
     statusCode: 200,
     to: data.email,
     from: `${COMPANY_NAME} <${COMPANY_EMAIL_ADDRESS}>`,
-    subject: "The Spirits Valley - bericht succesvol ontvangen",
+    subject: "Bericht succesvol ontvangen",
     html: `<h4><b>Bericht ontvangen</b></h4>
       <p>Bedankt voor je bericht.</p>
-      <p>We hebben het succesvol ontvangen en zullen je zo snel contacteren voor verdere opvolging.</p>
+      <p>We hebben het bericht succesvol ontvangen bij The Spirits Valley en zullen je zo snel contacteren voor verdere opvolging.</p>
       ${bookTour}
+      ${bookTourConfirmation}
       <br>
       <h4><b>Bericht:</b></h4>
       <p style="border-left: 2px solid lightgrey; padding-left:5px; white-space:pre-line;">${data.message}</p>`,
