@@ -291,7 +291,10 @@ export default {
         email,
       },
       message: {
-        required
+        required: requiredIf(function(value){
+          const messageRequired = !value.tour.bookTour
+          return messageRequired
+        })
       },
       tour: {
         guests: {

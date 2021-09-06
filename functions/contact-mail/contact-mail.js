@@ -15,7 +15,17 @@ const handler = async (event) => {
 
   const data = JSON.parse(event.body)
 
-  if (!data.message || !data.email) {
+  let valid = false
+
+  if(data.bookTour) {
+    if(data.email && data.tour.guests > 0 && data.tour.date) {
+      valid = true
+    }
+  } else if(data.message && data.email) {
+      valid = true
+    }
+
+  if (!valid) {
     return { statusCode: 422, body: 'Email and message are required.' }
   }
 
@@ -24,9 +34,11 @@ const handler = async (event) => {
   `<p><b>Rondleiding geboekt:</b> Ja</p>
   <p><b>Aantal bezoekers:</b> ${data.tour.guests}</p>
   <p><b>Gewenste bezoekdatum:</b> ${new Date(data.tour.date).toLocaleDateString('nl')}</p>`
-  : '`<p><b>Rondleiding geboekt:</b> Nee</p>`'
+  : '<p><b>Rondleiding geboekt:</b> Nee</p>'
   const bookTourMsg = data.bookTour ? '<p>De datum van bezoek is <b>nog niet definitief</b>, de bezoeker moet nog gecontacteerd worden om deze datum te bevestigen.</p>' : ''
   const bookTourConfirmation = data.bookTour ? '<p>De datum van bezoek is <b>nog niet definitief</b>, wij zullen u contacteren om deze datum te bevestigen.</p>' : ''
+  const message = data.message ? `<h4><b>Bericht:</b></h4>
+    <p style="border-left: 2px solid lightgrey; padding-left:5px; white-space:pre-line;">${ data.message }</p>` : ''
 
   const msg = {
     statusCode: 200,
@@ -39,11 +51,7 @@ const handler = async (event) => {
     ${bookTour}
     ${bookTourMsg}
     <p><b>Verzonden op ${new Date().toLocaleString('nl')}</b></p>
-    <br>
-    <p style="border-left: 2px solid lightgrey; padding-left:5px; white-space:pre-line;">${
-      data.message
-    }</p>
-    `,
+    ${message}`,
   }
 
   const confirmation = {
@@ -56,9 +64,7 @@ const handler = async (event) => {
       <p>We hebben het bericht succesvol ontvangen bij The Spirits Valley en zullen je zo snel mogelijk contacteren voor verdere opvolging.</p>
       ${bookTour}
       ${bookTourConfirmation}
-      <br>
-      <h4><b>Bericht:</b></h4>
-      <p style="border-left: 2px solid lightgrey; padding-left:5px; white-space:pre-line;">${data.message}</p>`,
+      ${message}`,
   }
 
   try {
