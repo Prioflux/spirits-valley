@@ -1,5 +1,5 @@
 <template>
-  <div v-editable="blok" class="pb-16 pt-10  bg-white overflow-hidden">
+  <div id="teaser" v-editable="blok" class="pb-16 pt-10  bg-white overflow-hidden">
     <div class="relative max-w-xl mx-auto px-4 sm:px-6 lg:px-8 lg:max-w-7xl">
       <svg class="hidden lg:block absolute right-full transform translate-x-1/2 translate-y-12" width="404" height="784" fill="none" viewBox="0 0 404 784" aria-hidden="true">
         <defs>
@@ -13,13 +13,6 @@
       <div class="relative mt-12 sm:mt-16 lg:mt-24">
         <div class="grid grid-flow-row-dense grid-cols-1  lg:grid-cols-2 lg:gap-8 lg:items-center">
           <div class="lg:col-start-2 lg:ml-20">
-            <h2 class="text-4xl font-handwriting font-extrabold text-gray-900 tracking-tight">
-              {{ blok.title }}
-            </h2>
-            <p class="mt-3 text-lg text-gray-500">
-              {{ blok.description }}
-            </p>
-
             <dl class="mt-10 space-y-10">
               <div v-for="feature in blok.features" :key="feature._iud" class="relative">
                 <dt>

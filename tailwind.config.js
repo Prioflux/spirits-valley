@@ -17,8 +17,8 @@ module.exports = {
         gray: colors.warmGray,
       },
       fontFamily: {
-        serif: ['"Crimson Pro"', 'Montserrat', 'serif'],
-        handwriting: ['"Satisfy"', '"Crimson Pro"', 'Montserrat', 'serif']
+        sans: ['Rubik', 'Verdana', 'sans-serif'],
+        handwriting: ['"Satisfy"', 'Rubik', 'Verdana', 'sans-serif']
       },
       cursor: {
         'zoom-in': 'zoom-in'

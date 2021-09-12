@@ -11,8 +11,10 @@
 
             <li v-for="company in blok.companies" :key="company._iud" class="sm:py-8">
               <div class="space-y-4 sm:grid sm:grid-cols-3 sm:items-start sm:gap-6 sm:space-y-0">
-                <div class="bg-white aspect-w-3 aspect-h-2 sm:aspect-w-3 sm:aspect-h-3">
-                  <img class="shadow-lg rounded-lg" :src="company.image.filename" :alt="company.image.alt">
+                <div class="px-5">
+                  <div class="aspect-w-3 aspect-h-2 sm:aspect-w-3 sm:aspect-h-3">
+                    <img :src="company.image.filename" :alt="company.image.alt">
+                  </div>
                 </div>
                 <div class="sm:col-span-2">
                   <div class="space-y-4">

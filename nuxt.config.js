@@ -51,6 +51,7 @@ export default {
     { src: '@/plugins/lightbox', mode: 'client' },
     { src: '@/plugins/datepicker', mode: 'client' },
     { src: '@/plugins/toast', mode: 'client' },
+    { src: '@/plugins/carousel', mode: 'client' },
     { src: '@/plugins/vuelidate' },
     { src: '@/plugins/imageService' },
   ],
@@ -67,6 +68,21 @@ export default {
     '@nuxtjs/google-fonts',
   ],
 
+  googleFonts: {
+    prefetch: true,
+    preconnect: true,
+    preload: true,
+    display: 'swap',
+    families: {
+      'Rubik': {
+        wght: [400, 700],
+      },
+      'Satisfy': {
+        wght: [400]
+      }
+    },
+  },
+
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
@@ -78,27 +94,44 @@ export default {
         cacheProvider: 'memory',
       },
     ],
+    '@nuxtjs/i18n',
     '@nuxtjs/sitemap'
   ],
-
-    googleFonts: {
-    prefetch: true,
-    preconnect: true,
-    preload: true,
-    display: 'swap',
-    families: {
-      'Crimson Pro': {
-        wght: [400, 700],
-      },
-      'Satisfy': {
-        wght: [400]
-      }
-    },
-  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     baseURL: BASE_URL,
+  },
+
+  i18n: {
+    seo: true,
+    baseUrl: BASE_URL,
+    strategy: 'prefix_except_default',
+    defaultLocale: 'nl',
+    vueI18n: {
+      fallbackLocale: 'nl',
+    },
+    detectBrowserLanguage: {
+      useCookie: true,
+      onlyOnRoot: true, // recommended
+    },
+    locales: [
+      {
+        code: 'en',
+        name: 'English',
+        iso: 'en-US',
+      },
+      {
+        code: 'nl',
+        name: 'Nederlands',
+        iso: 'nl-BE',
+      },
+      {
+        code: 'fr',
+        name: 'Français',
+        iso: 'fr-FR',
+      },
+    ],
   },
 
   sitemap: {
