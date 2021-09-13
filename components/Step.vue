@@ -24,11 +24,11 @@
     <p class="max-w-2xl mt-5 mx-auto text-xl text-gray-500">
       {{ step.description }}
     </p>
-    <div class="max-w-2xl mt-5 mx-auto">
+    <div v-if="imageUrl(step.images[0])" class="max-w-2xl mt-5 mx-auto">
       <img
         class="lightbox-image"
-        :src="step.images[0].image.filename"
-        :alt="step.images[0].image.alt"
+        :src="imageUrl(step.images[0])"
+        :alt="imageAlt(step.images[0])"
         @click="index = 0"
       />
       <div class="grid grid-cols-1 md:grid-cols-4 -mx-2 -mb-8 mt-8">
@@ -86,6 +86,12 @@ export default {
    },
    numberExtraImages(images) {
       return images.length-images?.slice(0, 5).length
+    },
+    imageUrl(item) {
+      return item?.image?.filename
+    },
+    imageAlt(item) {
+      return item?.image?.alt
     }
   }
 }

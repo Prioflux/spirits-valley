@@ -1,7 +1,7 @@
 <template>
   <section v-editable="blok" class="bg-gray-100">
     <div class=" max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="container px-5 py-24 mx-auto flex flex-col">
+      <div class="container px-5 py-24 mx-auto">
         <div class="lg:w-4/6 mx-auto">
           <div class="rounded-lg shadow-xl h-64 overflow-hidden">
             <img alt="content" class="object-cover object-center h-full w-full" :src="$options.filters.transformImage(blok.image.filename, '1200x500')">
@@ -17,9 +17,9 @@
                 <p class="text-base">{{ blok.profile_description }}</p>
               </div>
             </div>
-            <div class="sm:w-2/3 sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
+            <div class="sm:w-2/3 sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-left">
               <p class="leading-relaxed text-lg mb-4">{{ blok.description }}</p>
-              <nuxt-link to="/tijdlijn" class="btn-primary btn-primary-color">
+              <nuxt-link to="/tijdlijn" class="btn-primary btn-primary-color xs:h-5">
                 {{ blok.discover_button }}
               </nuxt-link>
             </div>

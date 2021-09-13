@@ -1,5 +1,5 @@
 <template>
-  <div v-editable="blok" class="bg-white">
+  <div v-editable="blok" :class="blok.background">
     <div class="max-w-7xl mx-auto pt-16 px-4 sm:pt-24 sm:px-6 lg:px-8">
       <div class="text-center">
         <h2 class="text-base font-semibold text-gray-500 tracking-wide uppercase">{{ blok.title }}</h2>
