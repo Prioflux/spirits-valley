@@ -9,9 +9,6 @@
               <h3 class="text-2xl font-handwriting font-bold text-gray-900 sm:text-3xl">
                 {{ blok.title }}
               </h3>
-              <p class="mt-6 text-base text-gray-500">
-                {{ blok.description }}
-              </p>
               <div class="mt-8">
                 <div class="flex items-center">
                   <h4 class="flex-shrink-0 pr-4 bg-white text-sm tracking-wider font-semibold uppercase text-gray-900">
@@ -55,6 +52,7 @@
         </div>
       </div>
     </div>
+    
   </div>
 </template>
 

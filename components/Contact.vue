@@ -63,7 +63,7 @@
             class="mt-9 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8"
             @submit.prevent="sendMessage"
           >
-            <div>
+            <div class="col-span-2 md:col-span-1">
               <label for="email" class="block text-sm font-medium text-gray-700">{{ blok.email_label }}</label>
               <div class="mt-1">
                 <input
@@ -91,7 +91,7 @@
                 {{ blok.invalid_error }}
               </p>
             </div>
-            <div>
+            <div class="col-span-2 md:col-span-1">
               <div class="flex justify-between">
                 <label for="phone" class="block text-sm font-medium text-gray-700">{{ blok.phone_label }}</label>
                 <span id="phone-description" class="text-sm text-gray-500">{{ blok.optional }}</span>
@@ -108,7 +108,7 @@
                 >
               </div>
             </div>
-            <div class="sm:col-span-2">
+            <div class="col-span-2">
               <div class="mt-4 grid grid-cols-1 gap-y-4">
                 <div class="flex items-center">
                   <div class="flex items-center h-5">
@@ -126,47 +126,112 @@
                 </div>
               </div>
             </div>
-            <div v-if="form.tour.bookTour">
-              <div>
+            <div v-if="form.tour.bookTour" class="col-span-2">
+              <label for="price" class="block text-sm font-medium text-gray-700">{{ blok.arrangement_label }}</label>
+              <v-select
+                v-model="$v.form.tour.arrangement.$model"
+                class="custom-select"
+                :class="{ 'select-error': $v.form.tour.arrangement.$error }"
+                :options="blok.arrangements"
+              ></v-select>
+              <p
+                v-if="$v.form.tour.arrangement.$error"
+                class="text-error"
+              >
+                {{ blok.arrangement_label }}
+                {{ blok.required_error }}
+              </p>
+            </div>
+            <div v-if="form.tour.bookTour && $v.form.tour.arrangement.$model" class="col-span-2 md:col-span-1">
+              <div class="flex justify-between">
+                <label for="guests" class="block text-sm font-medium text-gray-700">{{ blok.guests_1_label }}</label>
+              </div>
+              <div class="mt-1">
+                <input
+                  id="guests"
+                  v-model="$v.form.tour.guests_1.$model"
+                  type="number"
+                  min="1"
+                  step="1"
+                  name="guests"
+                  aria-describedby="guests-number"
+                  class="input"
+                  :class="{ 'input-error': $v.form.tour.guests_1.$error }"
+                >
+                <p
+                  v-if="$v.form.tour.guests_1.$error && !$v.form.tour.guests_1.$guestNumber"
+                  class="text-error"
+                >
+                  {{ blok.guests_error }}
+                </p>
+              </div>
+            </div>
+            <div v-if="form.tour.bookTour && $v.form.tour.arrangement.$model" class="col-span-2 md:col-span-1">
+              <div class="flex justify-between">
+                <label for="guests" class="block text-sm font-medium text-gray-700">{{ blok.guests_2_label }}</label>
+              </div>
+              <div class="mt-1">
+                <input
+                  id="guests"
+                  v-model="$v.form.tour.guests_2.$model"
+                  type="number"
+                  min="1"
+                  step="1"
+                  name="guests"
+                  aria-describedby="guests-number"
+                  class="input"
+                  :class="{ 'input-error': $v.form.tour.guests_2.$error }"
+                >
+                <p
+                  v-if="$v.form.tour.guests_2.$error && !$v.form.tour.guests_2.$guestNumber"
+                  class="text-error"
+                >
+                  {{ blok.guests_error }}
+                </p>
+              </div>
+            </div>
+            <div v-if="form.tour.bookTour && $v.form.tour.arrangement.$model" class="col-span-2 md:col-span-1">
+              <div class="mt-4">
                 <div class="flex justify-between">
-                  <label for="guests" class="block text-sm font-medium text-gray-700">{{ blok.guests_label }}</label>
+                  <label for="guests" class="block text-sm font-medium text-gray-700">{{ blok.guests_3_label }}</label>
                 </div>
                 <div class="mt-1">
                   <input
                     id="guests"
-                    v-model="$v.form.tour.guests.$model"
+                    v-model="$v.form.tour.guests_3.$model"
                     type="number"
                     min="1"
                     step="1"
                     name="guests"
                     aria-describedby="guests-number"
                     class="input"
-                    :class="{ 'input-error': $v.form.tour.guests.$error }"
+                    :class="{ 'input-error': $v.form.tour.guests_3.$error }"
                   >
                   <p
-                    v-if="$v.form.tour.guests.$error"
+                    v-if="$v.form.tour.guests_3.$error && !$v.form.tour.guests_3.$guestNumber"
                     class="text-error"
                   >
-                    {{ blok.guests_label }}
-                    {{ blok.required_error }}
+                    {{ blok.guests_error }}
                   </p>
                 </div>
               </div>
             </div>
-            <div v-if="form.tour.bookTour" class="self-center">
+            <div v-if="form.tour.bookTour && $v.form.tour.arrangement.$model" class="self-end col-span-2 md:col-span-1">
               <div>
-                <label for="price" class="text-md font-bold text-gray-700">{{ blok.price_per_person_label }}:</label>
-                <span>€ {{ blok.price_per_person }}</span>
+                <label for="price" class="text-md font-bold text-gray-700">{{ blok.number_of_people_label }}:</label>
+                <span>{{ totalGuests }}</span>
               </div>
-              <div v-if="form.tour.bookTour && form.tour.guests">
+              <div>
                 <label for="price" class="text-md font-bold text-gray-700">{{ blok.total_price_label }}:</label>
-                <span>€ {{ Math.max(form.tour.guests*blok.price_per_person,5) }}</span>
+                <span>€ {{ totalPrice }}</span>
               </div>
             </div>
-            <div v-if="form.tour.bookTour" class="sm:col-span-2">
+            <div v-if="form.tour.bookTour && $v.form.tour.arrangement.$model" class="col-span-2">
               <v-date-picker
                 v-model="$v.form.tour.date.$model"
                 locale="nl"
+                :min-date="new Date()"
+                :disabled-dates='{ weekdays: [1, 4, 7] }'
                 :input-debounce="500"
                 :model-config="modelConfig"
               >
@@ -193,7 +258,7 @@
                       {{ blok.date_label }}
                       {{ blok.required_error }}
                     </p>
-                    <p id="email-description" class="mt-2 text-sm text-gray-500">{{ blok.date_info }}</p>
+                    <p class="mt-2 text-sm text-gray-500">{{ blok.date_info }}</p>
                   </div>
                 </template>
               </v-date-picker>
@@ -224,7 +289,7 @@
                 {{ blok.required_error }}
               </p>
             </div>
-            <div class="text-right sm:col-span-2">
+            <div class="text-right col-span-2">
               <button
                 type="submit"
                 class="btn-primary btn-primary-color"
@@ -251,7 +316,8 @@ import {
   PhoneIcon,
   MailIcon,
 } from '@vue-hero-icons/outline'
-import { required, email, requiredIf } from 'vuelidate/lib/validators'
+import { required, email, requiredIf, helpers } from 'vuelidate/lib/validators'
+const validGuestNumber = (param) => (value) => !helpers.req(value) || (param >= 10 && param <= 25)
 
 export default {
   name: "Contact",
@@ -275,7 +341,10 @@ export default {
       message: null,
       tour: {
         bookTour: false,
-        guests: null,
+        arrangement: null,
+        guests_1: null,
+        guests_2: null,
+        guests_3: null,
         date: null,
       },
     },
@@ -284,31 +353,74 @@ export default {
       mask: 'YYYY-MM-DD', // Uses 'iso' if missing
     },
   }),
-  validations: {
-    form: {
-      email: {
-        required,
-        email,
-      },
-      message: {
-        required: requiredIf(function(value){
-          const messageRequired = !value.tour.bookTour
-          return messageRequired
-        })
-      },
-      tour: {
-        guests: {
+  validations() {
+    return {
+      form: {
+        email: {
+          required,
+          email,
+        },
+        message: {
           required: requiredIf(function(value){
-        	  return value.bookTour
+            const messageRequired = !value.tour.bookTour
+            return messageRequired
           })
         },
-        date: {
-          required: requiredIf(function(value){
-            return value.bookTour
-          })
+        tour: {
+          arrangement: {
+            required: requiredIf(function(value){
+              return value.bookTour
+            })
+          },
+          guests_1: {
+            guestNumber: validGuestNumber(this.totalGuests)
+          },
+          guests_2: {
+            guestNumber: validGuestNumber(this.totalGuests)
+          },
+          guests_3: {
+            guestNumber: validGuestNumber(this.totalGuests)
+          },
+          date: {
+            required: requiredIf(function(value){
+              return value.bookTour
+            })
+          }
         }
+      },
+    }
+  },
+  computed: {
+    totalGuests() {
+      let totalGuests = 0
+
+      if(this.form.tour.bookTour) {
+        totalGuests = this.createInt(this.form.tour.guests_1) + this.createInt(this.form.tour.guests_2) + this.createInt(this.form.tour.guests_3)
       }
+
+      return totalGuests
     },
+    totalPrice() { 
+      let totalPrice = 0
+
+      if(this.form.tour.bookTour) {
+        totalPrice = (this.createInt(this.form.tour.guests_1)*this.arrangementPrices.under12)
+                    +(this.createInt(this.form.tour.guests_2)*this.arrangementPrices.under18)
+                    +(this.createInt(this.form.tour.guests_3)*this.arrangementPrices.plus18)
+      }
+
+      return Math.max(totalPrice,0).toLocaleString('nl')
+    },
+    arrangementPrices() {
+      const arrangement = this.$v.form.tour.arrangement.$model
+      const prices = arrangement ? {
+        under12: arrangement.price_per_person_under_12,
+        under18: arrangement.price_per_person_under_18,
+        plus18: arrangement.price_per_person_18_plus
+      } : null
+
+      return prices
+    }
   },
   methods: {
     sendMessage() {
@@ -358,6 +470,10 @@ export default {
             this.loading = false
           })
       }
+    },
+    createInt(value) {
+      const number = !value || isNaN(value) ? 0 : parseInt(value)
+      return number
     }
   }
 }

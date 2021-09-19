@@ -52,6 +52,7 @@ export default {
     { src: '@/plugins/datepicker', mode: 'client' },
     { src: '@/plugins/toast', mode: 'client' },
     { src: '@/plugins/carousel', mode: 'client' },
+    { src: '@/plugins/select', mode: 'client' },
     { src: '@/plugins/vuelidate' },
     { src: '@/plugins/imageService' },
   ],
