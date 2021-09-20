@@ -127,12 +127,14 @@
               </div>
             </div>
             <div v-if="form.tour.bookTour" class="col-span-2">
-              <label for="price" class="block text-sm font-medium text-gray-700">{{ blok.arrangement_label }}</label>
+              <label for="arrangement" class="block text-sm font-medium text-gray-700">{{ blok.arrangement_label }}</label>
               <v-select
+                id="arrangement"
                 v-model="$v.form.tour.arrangement.$model"
                 class="custom-select"
                 :class="{ 'select-error': $v.form.tour.arrangement.$error }"
                 :options="blok.arrangements"
+                :clearable="false"
               ></v-select>
               <p
                 v-if="$v.form.tour.arrangement.$error"
@@ -226,7 +228,7 @@
                 <span>€ {{ totalPrice }}</span>
               </div>
             </div>
-            <div v-if="form.tour.bookTour && $v.form.tour.arrangement.$model" class="col-span-2">
+            <div v-if="form.tour.bookTour && $v.form.tour.arrangement.$model">
               <v-date-picker
                 v-model="$v.form.tour.date.$model"
                 locale="nl"
@@ -258,12 +260,32 @@
                       {{ blok.date_label }}
                       {{ blok.required_error }}
                     </p>
-                    <p class="mt-2 text-sm text-gray-500">{{ blok.date_info }}</p>
                   </div>
                 </template>
               </v-date-picker>
             </div>
-            <div class="sm:col-span-2">
+            <div v-if="form.tour.bookTour && $v.form.tour.arrangement.$model">
+              <label for="timing" class="block text-sm font-medium text-gray-700">{{ blok.timing_label }}</label>
+              <v-select
+                id="timing"
+                v-model="$v.form.tour.timing.$model"
+                class="custom-select"
+                :class="{ 'select-error': $v.form.tour.timing.$error }"
+                :options="blok.timings"
+                :clearable="false"
+              ></v-select>
+              <p
+                v-if="$v.form.tour.timing.$error"
+                class="text-error"
+              >
+                {{ blok.timing_label }}
+                {{ blok.required_error }}
+              </p>
+            </div>
+            <div v-if="form.tour.bookTour && $v.form.tour.arrangement.$model" class="col-span-2">
+              <p class="mt-2 text-sm text-gray-500">{{ blok.date_info }}</p>
+            </div>
+            <div class="col-span-2">
               <div class="flex justify-between">
                 <label
                   for="message"
@@ -346,6 +368,7 @@ export default {
         guests_2: null,
         guests_3: null,
         date: null,
+        timing: null,
       },
     },
     modelConfig: {
@@ -373,19 +396,36 @@ export default {
             })
           },
           guests_1: {
-            guestNumber: validGuestNumber(this.totalGuests)
+            guestNumber: validGuestNumber(this.totalGuests),
+            required: requiredIf(function(value){
+              const validGuests = value.bookTour && !(this.totalGuests >= 10 && this.totalGuests <= 25)
+              return validGuests
+            })
           },
           guests_2: {
-            guestNumber: validGuestNumber(this.totalGuests)
+            guestNumber: validGuestNumber(this.totalGuests),
+            required: requiredIf(function(value){
+              const validGuests = value.bookTour && !(this.totalGuests >= 10 && this.totalGuests <= 25)
+              return validGuests
+            })
           },
           guests_3: {
-            guestNumber: validGuestNumber(this.totalGuests)
+            guestNumber: validGuestNumber(this.totalGuests),
+            required: requiredIf(function(value){
+              const validGuests = value.bookTour && !(this.totalGuests >= 10 && this.totalGuests <= 25)
+              return validGuests
+            })
           },
           date: {
             required: requiredIf(function(value){
               return value.bookTour
             })
-          }
+          },
+          timing: {
+            required: requiredIf(function(value){
+              return value.bookTour
+            })
+          },
         }
       },
     }
@@ -430,17 +470,26 @@ export default {
 
       if (!invalid) {
         this.loading = true
+
+        const formData = {
+          email: this.form.email,
+          phone: this.form.phone,
+          message: this.form.message,
+          bookTour: this.form.tour.bookTour,
+          tour: {
+            arrangement: this.form.tour.arrangement.label,
+            guests_1: this.form.tour.guests_1 ? parseInt(this.form.tour.guests_1) : 0,
+            guests_2: this.form.tour.guests_2 ? parseInt(this.form.tour.guests_2) : 0,
+            guests_3: this.form.tour.guests_3 ? parseInt(this.form.tour.guests_3) : 0,
+            date: this.form.tour.date,
+            timing: this.form.tour.timing.label,
+            price: this.totalPrice
+          }
+        }
+        
+        console.log(formData)
         this.$axios
-          .$post('/.netlify/functions/contact-mail', {
-            email: this.form.email,
-            phone: this.form.phone,
-            message: this.form.message,
-            bookTour: this.form.tour.bookTour,
-            tour: {
-              guests: this.form.tour.guests,
-              date: this.form.tour.date
-            }
-          })
+          .$post('/.netlify/functions/contact-mail', formData)
           .then(() => {
             this.$v.$reset()
             this.form = {
@@ -450,8 +499,12 @@ export default {
               message: '',
               tour: {
                 bookTour: false,
-                guests: '',
-                date: ''
+                arrangement: null,
+                guests_1: null,
+                guests_2: null,
+                guests_3: null,
+                date: '',
+                timing: null,
               } 
             }
             this.$toasted.show(this.blok.success_message, { type: 'success' })
@@ -478,3 +531,28 @@ export default {
   }
 }
 </script>
+
+<style>
+.custom-select .vs__search::placeholder,
+.custom-select .vs__dropdown-toggle {
+  @apply mt-1 w-full py-2 px-4 text-base border-gray-300 focus:outline-none focus:ring-gray-900 focus:border-gray-900 sm:text-sm rounded-md;
+}
+
+.select-error .vs__search::placeholder,
+.select-error .vs__dropdown-toggle {
+  @apply ring-red-600 border-red-600 focus:ring-red-600 focus:border-red-600;
+}
+
+.custom-select .vs__dropdown-menu {
+  @apply text-base;
+}
+
+.custom-select .vs__dropdown-option--highlight {
+  @apply bg-gray-900;
+}
+
+.custom-select .vs__clear,
+.custom-select .vs__open-indicator {
+  fill: #000;
+}
+</style>
