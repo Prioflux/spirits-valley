@@ -16,7 +16,7 @@
           <div class="relative max-w-md mx-auto py-12 px-4 space-y-6 sm:max-w-3xl sm:py-16 sm:px-6 lg:max-w-none lg:p-0 lg:col-start-4 lg:col-span-6">
             <h2 class="text-5xl font-extrabold text-white font-handwriting">{{ blok.title }}</h2>
             <p class="text-lg text-white">{{ blok.description }}</p>
-            <nuxt-link to="/contact" class="block w-full py-3 px-5 text-center bg-white btn text-gray-900 hover:bg-gray-50 sm:inline-block sm:w-auto" href="#">
+            <nuxt-link :to="localePath('contact')" class="block w-full py-3 px-5 text-center bg-white btn text-gray-900 hover:bg-gray-50 sm:inline-block sm:w-auto" href="#">
               {{ blok.button}}
             </nuxt-link>
           </div>

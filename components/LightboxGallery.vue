@@ -14,7 +14,7 @@
             </div>
           </div>
           <div class="md:w-1/2 h-auto px-4">
-            <div class="mb-8"><img class="" :src="$options.filters.transformImage(blok.logo.filename, '1280x720')" :alt="blok.logo.alt"></div>
+            <div class="mb-8"><img :src="$options.filters.transformImage(blok.logo.filename, '1280x720')" :alt="blok.logo.alt"></div>
             <div><img class="lightbox-image" :src="$options.filters.transformImage(blok.images[1].image.filename, '1280x720')" :alt="blok.images[1].image.alt" @click="index = 1"></div>
           </div>
         </div>

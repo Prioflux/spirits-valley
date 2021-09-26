@@ -7,10 +7,10 @@
         </h2>
         <p class="mt-4 text-lg leading-6 text-gray-700">{{ blok.description }}</p>
         <div class="grid grid-cols-1 md:grid-cols-2 md:space-x-10 justify-center">
-          <nuxt-link to="/contact" class="mt-8 w-full inline-flex items-center justify-center px-5 py-3 btn-primary btn-primary-color sm:w-auto">
+          <nuxt-link :to="localePath('contact')" class="mt-8 w-full inline-flex items-center justify-center px-5 py-3 btn-primary btn-primary-color sm:w-auto">
             {{ blok.contact_button }}
           </nuxt-link>
-          <nuxt-link to="/rondleidingen" class="mt-8 w-full inline-flex items-center justify-center px-5 py-3 btn-secondary btn-secondary-color sm:w-auto">
+          <nuxt-link :to="localePath('rondleidingen')" class="mt-8 w-full inline-flex items-center justify-center px-5 py-3 btn-secondary btn-secondary-color sm:w-auto">
             {{ blok.info_button }}
           </nuxt-link>
         </div>

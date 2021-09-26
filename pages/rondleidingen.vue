@@ -13,13 +13,23 @@ import storyblokBridgeMixin from '@/mixins/storyblokBridgeMixin'
 export default {
   name: 'Tours',
   mixins: [metadataMixin, storyblokBridgeMixin],
+  nuxtI18n: {
+    paths: {
+      en: '/tours',
+      nl: '/rondleidingen',
+      fr: '/visites-guidees',
+    },
+  },
   asyncData(context) {
     const version =
       context.query._storyblok || context.isDev ? 'draft' : 'published'
+    const locale =
+      context.app.i18n.locale === 'nl' ? '' : context.app.i18n.locale
     
     return context.app.$storyapi
       .get('cdn/stories/rondleidingen', {
         version,
+        language: locale,
         resolve_relations: 'globalReference.reference',
       })
       .then((res) => {

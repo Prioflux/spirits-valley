@@ -5,7 +5,7 @@
         :class="{ scrolled: !topOfPage }"
         class="
           hidden
-          md:flex md:fixed
+          lg:flex lg:fixed
           w-full
           flex-wrap
           m-auto
@@ -14,13 +14,13 @@
           justify-between
           items-center
           p-6
-          md:justify-start
+          lg:justify-start
           lg:space-x-10
           animated
         "
       >
         <div class="inline-flex justify-start items-center lg:w-0 lg:flex-1">
-          <nuxt-link to="/">
+          <nuxt-link :to="localePath('index')">
             <span class="pl-2 font-bold text-4xl font-handwriting" :class="{'btn-text-top': topOfPage }">
               {{ blok.name }}
             </span>
@@ -30,29 +30,47 @@
         <div
           class="
             hidden
-            md:flex
+            lg:flex
             items-center
             justify-end
-            md:flex-1
+            lg:flex-1
             lg:w-0
             space-x-10
           "
         >
 
-          <nuxt-link to="/tijdlijn" class="btn-text btn-focus" :class="{'btn-text-top': topOfPage, 'btn-text-color': !topOfPage }">
+          <nuxt-link :to="localePath('tijdlijn')" class="btn-text btn-focus" :class="{'btn-text-top': topOfPage, 'btn-text-color': !topOfPage }">
             {{ blok.history }}
           </nuxt-link>
 
-          <nuxt-link to="/rondleidingen" class="btn-text btn-focus" :class="{'btn-text-top': topOfPage, 'btn-text-color': !topOfPage }">
+          <nuxt-link :to="localePath('rondleidingen')" class="btn-text btn-focus" :class="{'btn-text-top': topOfPage, 'btn-text-color': !topOfPage }">
             {{ blok.tours }}
           </nuxt-link>
 
-          <nuxt-link to="/dagtrips" class="btn-text btn-focus" :class="{'btn-text-top': topOfPage, 'btn-text-color': !topOfPage }">
+          <nuxt-link :to="localePath('dagtrips')" class="btn-text btn-focus" :class="{'btn-text-top': topOfPage, 'btn-text-color': !topOfPage }">
             {{ blok.trips }}
           </nuxt-link>
 
+          <v-select
+            class="custom-dropdown"
+            :class="{ 'dropdown-top': topOfPage, 'dropdown-scrolled': !topOfPage }"
+            label="name"
+            :options="availableLocales"
+            :value="currentLanguage"
+          >
+            <template #option="option">
+              <nuxt-link
+                :to="switchLocalePath(option.code)"
+                role="menuitem"
+                tabindex="-1"
+                @click="$i18n.setLocale(option.code)"
+                >{{ option.name }}
+              </nuxt-link>
+            </template>
+          </v-select>
+
           <nuxt-link
-            to="/contact"
+            :to="localePath('contact')"
             class="
               btn
               btn-primary
@@ -74,7 +92,7 @@
         transition
         transform
         origin-top-right
-        md:hidden
+        lg:hidden
       "
     >
       <div
@@ -84,8 +102,10 @@
       >
         <div class="pt-5 pb-6 px-5">
           <div class="flex items-center justify-between">
-            <nuxt-link to="/">
-              <span class="pl-2 uppercase font-bold text-2xl" :class="{ 'btn-text-top': topOfPage, 'text-gray-900': showMobile }">
+            <nuxt-link :to="localePath('index')">
+              <span
+                class="font-handwriting pl-2 font-bold text-2xl"
+                :class="{ 'btn-text-top': topOfPage, 'text-gray-900': showMobile }">
                 {{ blok.name }}
               </span>
             </nuxt-link>
@@ -140,7 +160,7 @@
               <nav class="grid grid-cols-1 gap-y-8">
 
                 <nuxt-link
-                  to="/tijdlijn"
+                  :to="localePath('tijdlijn')"
                   class="-m-3 p-3 flex items-center hover:bg-gray-50"
                 >
                   <BookOpenIcon />
@@ -151,7 +171,7 @@
                 </nuxt-link>
 
                 <nuxt-link
-                  to="/rondleidingen"
+                  :to="localePath('rondleidingen')"
                   class="-m-3 p-3 flex items-center hover:bg-gray-50"
                 >
                   
@@ -175,7 +195,7 @@
                 </nuxt-link>
 
                 <nuxt-link
-                  to="/contact"
+                  :to="localePath('contact')"
                   class="
                     btn
                     whitespace-nowrap
@@ -221,20 +241,23 @@ export default {
     topOfPage: true,
   }),
   computed: {
-    services() {
-      return this.blok.services_dropdown
+    currentLanguage() {
+      const language = this.$i18n.locale.toUpperCase()
+      return language
+    },
+    availableLocales() {
+      const locales = this.$i18n.locales.filter((i) => i.code !== this.$i18n.locale)
+      return locales
     },
   },
   beforeMount() {
     window.addEventListener('scroll', this.handleScroll)
   },
   methods: {
-    // the function to call when the user scrolls, added as a method
     handleScroll() {
       if (!this.topOfPage) {
         this.topOfPage = true
       }
-      // when the user scrolls, check the pageYOffset
       if (window.pageYOffset > 0) {
         // user is scrolled
         if (this.topOfPage) this.topOfPage = false
@@ -243,3 +266,38 @@ export default {
   },
 }
 </script>
+
+<style>
+.custom-select .vs__dropdown-option--highlight,
+.custom-dropdown .vs__dropdown-option--highlight {
+  @apply bg-gray-900;
+}
+
+.custom-dropdown .vs__search::placeholder,
+.custom-dropdown .vs__dropdown-toggle {
+  @apply border-0 w-20 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-200 transition-all;
+}
+
+.custom-select .vs__dropdown-menu,
+.custom-dropdown .vs__dropdown-menu {
+  @apply text-base rounded-md bg-gray-50;
+}
+
+.dropdown-top .vs__selected {
+  @apply text-gray-50 opacity-100;
+}
+
+.dropdown-scrolled .vs__selected {
+  @apply text-gray-500;
+}
+
+.dropdown-top .vs__open-indicator {
+  fill: #fafaf9;
+}
+
+.dropdown-scrolled .vs__open-indicator {
+  fill: #78716c;
+}
+
+
+</style>

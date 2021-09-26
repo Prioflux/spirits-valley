@@ -13,15 +13,18 @@ import storyblokBridgeMixin from '@/mixins/storyblokBridgeMixin';
 export default {
   name: 'Index',
   mixins: [metadataMixin, storyblokBridgeMixin],
+
   asyncData(context) {
     const version =
       context.query._storyblok || context.isDev
         ? 'draft'
         : 'published';
-
+    const locale =
+      context.app.i18n.locale === 'nl' ? '' : context.app.i18n.locale
     return context.app.$storyapi
       .get('cdn/stories/home', {
         version,
+        language: locale,
         resolve_relations: 'globalReference.reference',
       })
       .then((res) => {

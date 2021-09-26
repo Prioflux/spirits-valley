@@ -28,7 +28,7 @@
             </dl>
 
             <div class="mt-5">
-              <nuxt-link to="/tijdlijn" class="btn btn-primary btn-primary-color">{{ blok.discover_button }}</nuxt-link>
+              <nuxt-link :to="localePath('tijdlijn')" class="btn btn-primary btn-primary-color">{{ blok.discover_button }}</nuxt-link>
             </div>
           </div>
 

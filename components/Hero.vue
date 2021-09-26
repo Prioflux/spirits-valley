@@ -24,10 +24,9 @@
             <span class="block text-white w-full lg:w-3/4 mx-auto">{{ blok.baseline }}</span>
           </h1>
         </div>
-        <div class="absolute inset-x-0 bottom-0 z-10 px-4 py-16 sm:px-6 lg:px-8">
+        <div class="absolute inset-x-0 bottom-0 z-10 px-4 py-9 sm:px-6 lg:px-8">
           <div class="text-white">
             <span class="scroll-icon"></span>
-            <span class="scroll-text text-lg font-bold">{{ blok.scroll }}</span>
           </div>
         </div>
       </div>

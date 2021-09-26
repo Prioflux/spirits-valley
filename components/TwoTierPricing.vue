@@ -47,7 +47,7 @@
                 </ul>
                 <div class="rounded-md shadow">
                   <nuxt-link
-                    to="/contact"
+                    :to="localePath('contact')"
                     class="flex items-center justify-center px-5 py-3 btn-primary uppercase text-lg text-white bg-gray-800 hover:bg-gray-900"
                     aria-describedby="tier-standard">
                     {{ card.contact }}
@@ -71,7 +71,7 @@
             </div>
             <div class="mt-6 rounded-md shadow lg:mt-0 lg:ml-10 lg:flex-shrink-0">
               <nuxt-link
-                to="/rondleidingen"
+                :to="localePath('rondleidingen')"
                 class="flex items-center justify-center px-5 py-3 btn-primary text-gray-900 bg-white hover:bg-gray-50">
                 {{ blok.teaser_button }}
               </nuxt-link>

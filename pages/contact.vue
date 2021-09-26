@@ -16,10 +16,13 @@ export default {
   asyncData(context) {
     const version =
       context.query._storyblok || context.isDev ? 'draft' : 'published'
+    const locale =
+      context.app.i18n.locale === 'nl' ? '' : context.app.i18n.locale
     
     return context.app.$storyapi
       .get('cdn/stories/contact', {
         version,
+        language: locale,
         resolve_relations: 'globalReference.reference',
       })
       .then((res) => {

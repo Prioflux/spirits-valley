@@ -94,7 +94,7 @@
             <div class="col-span-2 md:col-span-1">
               <div class="flex justify-between">
                 <label for="phone" class="block text-sm font-medium text-gray-700">{{ blok.phone_label }}</label>
-                <span id="phone-description" class="text-sm text-gray-500">{{ blok.optional }}</span>
+                <span class="text-sm text-gray-500">{{ blok.optional }}</span>
               </div>
               <div class="mt-1">
                 <input
@@ -134,7 +134,6 @@
                 class="custom-select"
                 :class="{ 'select-error': $v.form.tour.arrangement.$error }"
                 :options="blok.arrangements"
-                :clearable="false"
               ></v-select>
               <p
                 v-if="$v.form.tour.arrangement.$error"
@@ -291,6 +290,7 @@
                   for="message"
                   class="block text-sm font-medium text-gray-700"
                 >{{ blok.message_label }}</label>
+                <span v-if="form.tour.bookTour" class="text-sm text-gray-500">{{ blok.optional }}</span>
               </div>
               <div class="mt-1">
                 <textarea
@@ -487,7 +487,6 @@ export default {
           }
         }
         
-        console.log(formData)
         this.$axios
           .$post('/.netlify/functions/contact-mail', formData)
           .then(() => {
@@ -533,6 +532,11 @@ export default {
 </script>
 
 <style>
+.custom-select .vs__dropdown-menu {
+  top: calc(100% - 5px);
+  @apply text-base shadow-none;
+}
+
 .custom-select .vs__search::placeholder,
 .custom-select .vs__dropdown-toggle {
   @apply mt-1 w-full py-2 px-4 text-base border-gray-300 focus:outline-none focus:ring-gray-900 focus:border-gray-900 sm:text-sm rounded-md;
@@ -541,14 +545,6 @@ export default {
 .select-error .vs__search::placeholder,
 .select-error .vs__dropdown-toggle {
   @apply ring-red-600 border-red-600 focus:ring-red-600 focus:border-red-600;
-}
-
-.custom-select .vs__dropdown-menu {
-  @apply text-base;
-}
-
-.custom-select .vs__dropdown-option--highlight {
-  @apply bg-gray-900;
 }
 
 .custom-select .vs__clear,
