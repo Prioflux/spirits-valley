@@ -11,13 +11,13 @@ import metadataMixin from '@/mixins/metadataMixin'
 import storyblokBridgeMixin from '@/mixins/storyblokBridgeMixin'
 
 export default {
-  name: 'Contact',
+  name: 'EventsRoomRental',
   mixins: [metadataMixin, storyblokBridgeMixin],
   nuxtI18n: {
     paths: {
-      en: '/contact',
-      nl: '/contact',
-      fr: '/contact',
+      en: '/events-room-rental',
+      nl: '/evenementen-zaalverhuur',
+      fr: '/location-de-salle-evenementielle',
     },
   },
   asyncData(context) {
@@ -27,7 +27,7 @@ export default {
       context.app.i18n.locale === 'nl' ? '' : context.app.i18n.locale
     
     return context.app.$storyapi
-      .get('cdn/stories/contact', {
+      .get('cdn/stories/evenementen-zaalverhuur', {
         version,
         language: locale,
         resolve_relations: 'globalReference.reference',

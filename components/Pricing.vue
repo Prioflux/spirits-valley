@@ -1,11 +1,11 @@
 <template>
   <div v-editable="blok" class="bg-gray-100">
-    <div class="bg-white pb-16 sm:pb-20 lg:pb-28">
+    <div class="bg-gray-100 pb-20 pt-8">
       <div class="relative">
-        <div class="absolute inset-0 h-1/2 bg-gray-100"></div>
+        
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="max-w-lg mx-auto rounded-lg shadow-lg overflow-hidden lg:max-w-none lg:flex">
-            <div class="flex-1 bg-white px-6 py-8 lg:p-12">
+          <div class="max-w-lg mx-auto rounded-lg shadow-lg overflow-hidden lg:max-w-none lg:flex mt-8">
+            <div class="flex-1 bg-white px-6 py-8 lg:p-12 ">
               <h3 class="text-2xl font-handwriting font-bold text-gray-900 sm:text-3xl">
                 {{ blok.title }}
               </h3>
@@ -37,7 +37,7 @@
                   {{ blok.amount }}
                 </span>
                 <span class="ml-3 text-xl font-medium text-gray-500">
-                  {{ blok.per_person }}
+                  {{ blok.per_unit }}
                 </span>
               </div>
               <div class="mt-6">

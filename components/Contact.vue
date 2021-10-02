@@ -113,6 +113,24 @@
                 <div class="flex items-center">
                   <div class="flex items-center h-5">
                     <input
+                      id="event"
+                      v-model="form.event.bookEvent"
+                      aria-describedby="tour"
+                      name="event"
+                      type="checkbox"
+                      class="cursor-pointer focus:ring-gray-500 h-4 w-4 text-gray-900 border-gray-300 rounded">
+                  </div>
+                  <div class="ml-3 text-sm">
+                    <label for="event" class="cursor-pointer block text-sm font-medium text-gray-700">{{ blok.event_label }}</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-span-2">
+              <div class="mt-4 grid grid-cols-1 gap-y-4">
+                <div class="flex items-center">
+                  <div class="flex items-center h-5">
+                    <input
                       id="tour"
                       v-model="form.tour.bookTour"
                       aria-describedby="tour"
@@ -361,6 +379,9 @@ export default {
       email: null,
       phone: null,
       message: null,
+      event: {
+        bookEvent: false,
+      },
       tour: {
         bookTour: false,
         arrangement: null,
@@ -475,14 +496,15 @@ export default {
           email: this.form.email,
           phone: this.form.phone,
           message: this.form.message,
+          bookEvent: this.form.event.bookEvent,
           bookTour: this.form.tour.bookTour,
           tour: {
-            arrangement: this.form.tour.arrangement.label,
+            arrangement: this.form.tour.arrangement?.label,
             guests_1: this.form.tour.guests_1 ? parseInt(this.form.tour.guests_1) : 0,
             guests_2: this.form.tour.guests_2 ? parseInt(this.form.tour.guests_2) : 0,
             guests_3: this.form.tour.guests_3 ? parseInt(this.form.tour.guests_3) : 0,
             date: this.form.tour.date,
-            timing: this.form.tour.timing.label,
+            timing: this.form.tour.timing?.label,
             price: this.totalPrice
           }
         }
@@ -496,6 +518,9 @@ export default {
               phone: '',
               company: '',
               message: '',
+              event: {
+                bookEvent: false,
+              },
               tour: {
                 bookTour: false,
                 arrangement: null,
@@ -532,6 +557,10 @@ export default {
 </script>
 
 <style>
+.custom-select .vs__dropdown-option--highlight {
+  @apply bg-gray-900;
+}
+
 .custom-select .vs__dropdown-menu {
   top: calc(100% - 5px);
   @apply text-base shadow-none;

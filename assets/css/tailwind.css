@@ -30,7 +30,7 @@
   }
 
   .btn-text {
-    @apply p-2 whitespace-nowrap rounded-md text-lg font-medium;
+    @apply p-2 rounded-md text-lg font-medium;
   }
 
   .btn-text-color {
@@ -71,6 +71,10 @@
 
   .dropdown-arrow {
     @apply text-gray-400 ml-2 h-5 w-5 group-hover:text-gray-500;
+  }
+
+  .dropdown-option {
+    @apply text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100 hover:text-gray-900;
   }
 
   .divider {

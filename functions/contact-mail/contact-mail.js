@@ -37,6 +37,7 @@ const handler = async (event) => {
   }
 
   const phone = data.phone ? `<p><b>Telefoon: </b>${data.phone}</p>` : ''
+  const bookEvent = data.bookEvent ? '<p><b>Zaal geboekt:</b> Ja</p>' : '<p><b>Zaal geboekt:</b> Nee</p>'
   const bookTour = data.bookTour ? 
   `<p><b>Rondleiding geboekt:</b> Ja</p>
   <p><b>Aantal bezoekers (onder 12 jaar):</b> ${data.tour.guests_1}</p>
@@ -60,6 +61,7 @@ const handler = async (event) => {
     subject: `Nieuw bericht van ${data.email} op thespiritsvalley.com`,
     html: `<b>Email: </b>${data.email}
     ${phone}
+    ${bookEvent}
     ${bookTour}
     ${bookTourMsg}
     <p><b>Verzonden op ${new Date().toLocaleString('nl')}</b></p>
@@ -74,6 +76,7 @@ const handler = async (event) => {
     html: `<h4><b>Bericht ontvangen</b></h4>
       <p>Bedankt voor je bericht.</p>
       <p>We hebben het bericht succesvol ontvangen bij The Spirits Valley en zullen je zo snel mogelijk contacteren voor verdere opvolging.</p>
+      ${bookEvent}
       ${bookTour}
       ${bookTourConfirmation}
       ${bookTourPayment}

@@ -38,36 +38,119 @@
             space-x-10
           "
         >
-
-          <nuxt-link :to="localePath('tijdlijn')" class="btn-text btn-focus" :class="{'btn-text-top': topOfPage, 'btn-text-color': !topOfPage }">
+          <nuxt-link
+            :to="localePath('tijdlijn')"
+            class="btn-text"
+            :class="{'btn-text-top': topOfPage, 'btn-text-color': !topOfPage }"
+          >
             {{ blok.history }}
           </nuxt-link>
 
-          <nuxt-link :to="localePath('rondleidingen')" class="btn-text btn-focus" :class="{'btn-text-top': topOfPage, 'btn-text-color': !topOfPage }">
-            {{ blok.tours }}
-          </nuxt-link>
+          <div class="relative inline-block text-left">
+            <div>
+              <button
+                id="menu-button"
+                type="button"
+                class="inline-flex btn-text btn-focus"
+                :class="{'btn-text-top': topOfPage, 'btn-text-color': !topOfPage }"
+                aria-expanded="true"
+                aria-haspopup="true"
+                @click="showActivities = !showActivities"
+                @mouseover="showActivities = !showActivities"
+                @mouseleave="showActivities = false"
+              >
+                {{ blok.activities }}
+                <ChevronDownIcon class="-mr-1 ml-2 mt-1 h-5 w-5" />
+              </button>
+            </div>
 
-          <nuxt-link :to="localePath('dagtrips')" class="btn-text btn-focus" :class="{'btn-text-top': topOfPage, 'btn-text-color': !topOfPage }">
-            {{ blok.trips }}
-          </nuxt-link>
-
-          <v-select
-            class="custom-dropdown"
-            :class="{ 'dropdown-top': topOfPage, 'dropdown-scrolled': !topOfPage }"
-            label="name"
-            :options="availableLocales"
-            :value="currentLanguage"
-          >
-            <template #option="option">
-              <nuxt-link
-                :to="switchLocalePath(option.code)"
-                role="menuitem"
+            <transition
+              enter-active-class="transition duration-200 delay-100 ease-out"
+              enter-class="translate-y-1 opacity-0"
+              enter-to-class="translate-y-0 opacity-100"
+              leave-active-class="transition duration-150 delay-300 ease-in"
+              leave-class="translate-y-0 opacity-100"
+              leave-to-class="translate-y-1 opacity-0"
+            >
+              <div
+                v-show="showActivities"
+                class="origin-top-right absolute right-0 mt-2 w-44 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+                role="menu"
+                aria-orientation="vertical"
+                aria-labelledby="menu-button"
                 tabindex="-1"
-                @click="$i18n.setLocale(option.code)"
-                >{{ option.name }}
-              </nuxt-link>
-            </template>
-          </v-select>
+                @mouseover="showActivities = true"
+                @mouseleave="showActivities = false"
+              >
+                <div class="py-1" role="none">
+                  <nuxt-link
+                    v-for="(option, index) in activityOptions"
+                    :key="index"
+                    :to="localePath(`${option.slug}`)"
+                    class="dropdown-option"
+                    :class="{'btn-text-top': topOfPage, 'btn-text-color': !topOfPage }"
+                    @mouseover="showActivities = true"
+                    @mouseleave="showActivities = false"
+                  >
+                    {{ option.label }}
+                  </nuxt-link>
+                </div>
+              </div>          
+            </transition>
+          </div>       
+
+          <div class="relative inline-block text-left">
+            <div>
+              <button
+                id="menu-button"
+                type="button"
+                class="inline-flex btn-text btn-focus"
+                :class="{'btn-text-top': topOfPage, 'btn-text-color': !topOfPage }"
+                aria-expanded="true"
+                aria-haspopup="true"
+                @click="showLanguages = !showLanguages"
+                @mouseover="showLanguages = !showLanguages"
+                @mouseleave="showLanguages = false"
+              >
+                {{ currentLanguage }}
+                <ChevronDownIcon class="-mr-1 ml-2 mt-1 h-5 w-5" />
+              </button>
+            </div>
+            
+            <transition
+              enter-active-class="transition duration-200 delay-100 ease-out"
+              enter-class="translate-y-1 opacity-0"
+              enter-to-class="translate-y-0 opacity-100"
+              leave-active-class="transition duration-150 delay-300 ease-in"
+              leave-class="translate-y-0 opacity-100"
+              leave-to-class="translate-y-1 opacity-0"
+            >
+              <div
+                v-show="showLanguages"
+                class="origin-top-right absolute right-0 mt-2 w-32 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+                role="menu"
+                aria-orientation="vertical"
+                aria-labelledby="menu-button"
+                tabindex="-1"
+                @mouseover="showLanguages = true"
+                @mouseleave="showLanguages = false"
+              >
+                <div class="py-1" role="none">
+                  <nuxt-link
+                    v-for="(language, index) in availableLocales" :key="index"
+                    :to="switchLocalePath(language.code)"
+                    class="dropdown-option"
+                    :class="{'btn-text-top': topOfPage, 'btn-text-color': !topOfPage }"
+                    @mouseover="showLanguages = true"
+                    @mouseleave="showLanguages = false"
+                    @click="$i18n.setLocale(language.code)" 
+                  >
+                    {{ language.name }}
+                  </nuxt-link>
+                </div>
+              </div>          
+            </transition>
+          </div>
 
           <nuxt-link
             :to="localePath('contact')"
@@ -183,6 +266,18 @@
                 </nuxt-link>
 
                 <nuxt-link
+                  :to="localePath('evenementen-zaalverhuur')"
+                  class="-m-3 p-3 flex items-center hover:bg-gray-50"
+                >
+                  
+                  <KeyIcon />
+
+                  <span class="ml-3 text-base font-medium">
+                    {{ blok.events_room_rental }}
+                  </span>
+                </nuxt-link>
+
+                <nuxt-link
                   to="/dagtrips"
                   class="-m-3 p-3 flex items-center hover:bg-gray-50"
                 >
@@ -191,6 +286,21 @@
 
                   <span class="ml-3 text-base font-medium">
                     {{ blok.trips }}
+                  </span>
+                </nuxt-link>
+                
+                <div class="divider"></div>
+
+                <nuxt-link
+                  v-for="locale in availableLocales"
+                  :key="locale.code"
+                  :to="switchLocalePath(locale.code)"
+                  class="sm-btn-text"
+                  role="menuitem"
+                  tabindex="-1"
+                >
+                  <span class="sm-btn-text-inner">
+                    {{ locale.name }}
                   </span>
                 </nuxt-link>
 
@@ -222,7 +332,7 @@
 </template>
 
 <script>
-import { XIcon, MenuAlt1Icon, BookOpenIcon, MapIcon, LocationMarkerIcon } from '@vue-hero-icons/outline'
+import { XIcon, MenuAlt1Icon, BookOpenIcon, MapIcon, KeyIcon, LocationMarkerIcon, ChevronDownIcon } from '@vue-hero-icons/outline'
 
 export default {
   name: 'Header',
@@ -231,7 +341,9 @@ export default {
     MenuAlt1Icon,
     BookOpenIcon,
     MapIcon,
-    LocationMarkerIcon 
+    KeyIcon,
+    LocationMarkerIcon,
+    ChevronDownIcon
   },
   props: {
     blok: { type: Object, required: true },
@@ -239,6 +351,8 @@ export default {
   data: () => ({
     showMobile: false,
     topOfPage: true,
+    showActivities: false,
+    showLanguages: false,
   }),
   computed: {
     currentLanguage() {
@@ -249,6 +363,22 @@ export default {
       const locales = this.$i18n.locales.filter((i) => i.code !== this.$i18n.locale)
       return locales
     },
+    activityOptions() {
+      return [
+        {
+          label: this.blok.tours,
+          slug: 'rondleidingen'
+        },
+        {
+          label: this.blok.events_room_rental,
+          slug: 'evenementen-zaalverhuur'
+        },
+        {
+          label: this.blok.trips,
+          slug: 'dagtrips'
+        }
+      ]
+    } 
   },
   beforeMount() {
     window.addEventListener('scroll', this.handleScroll)
@@ -266,38 +396,3 @@ export default {
   },
 }
 </script>
-
-<style>
-.custom-select .vs__dropdown-option--highlight,
-.custom-dropdown .vs__dropdown-option--highlight {
-  @apply bg-gray-900;
-}
-
-.custom-dropdown .vs__search::placeholder,
-.custom-dropdown .vs__dropdown-toggle {
-  @apply border-0 w-20 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-200 transition-all;
-}
-
-.custom-select .vs__dropdown-menu,
-.custom-dropdown .vs__dropdown-menu {
-  @apply text-base rounded-md bg-gray-50;
-}
-
-.dropdown-top .vs__selected {
-  @apply text-gray-50 opacity-100;
-}
-
-.dropdown-scrolled .vs__selected {
-  @apply text-gray-500;
-}
-
-.dropdown-top .vs__open-indicator {
-  fill: #fafaf9;
-}
-
-.dropdown-scrolled .vs__open-indicator {
-  fill: #78716c;
-}
-
-
-</style>
