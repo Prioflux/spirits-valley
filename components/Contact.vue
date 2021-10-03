@@ -281,7 +281,10 @@
                 </template>
               </v-date-picker>
             </div>
-            <div v-if="form.tour.bookTour && $v.form.tour.arrangement.$model">
+            <div
+              v-if="form.tour.bookTour && $v.form.tour.arrangement.$model"
+              class="col-span-2 md:col-span-1"
+            >
               <label for="timing" class="block text-sm font-medium text-gray-700">{{ blok.timing_label }}</label>
               <v-select
                 id="timing"
