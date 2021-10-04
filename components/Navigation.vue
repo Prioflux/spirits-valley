@@ -13,14 +13,18 @@
           animated
           justify-between
           items-center
-          p-6
+          px-6
+          py-6
           lg:justify-start
           lg:space-x-10
           animated
         "
       >
         <div class="inline-flex justify-start items-center lg:w-0 lg:flex-1">
-          <nuxt-link :to="localePath('index')">
+          <nuxt-link class="flex-none" :to="localePath('index')">
+            <img class="w-12" :class="{ 'filter invert': topOfPage }" :src="blok.logo.filename" :alt="blok.logo.alt" />
+          </nuxt-link>
+          <nuxt-link class="flex-grow whitespace-nowrap pl-4" :to="localePath('index')">
             <span class="pl-2 font-bold text-4xl font-handwriting" :class="{'btn-text-top': topOfPage }">
               {{ blok.name }}
             </span>
@@ -185,9 +189,12 @@
       >
         <div class="pt-5 pb-6 px-5">
           <div class="flex items-center justify-between">
-            <nuxt-link :to="localePath('index')">
+            <nuxt-link class="flex-none hidden sm:block" :to="localePath('index')">
+              <img class="w-12" :class="{ 'filter invert': topOfPage }" :src="blok.logo.filename" :alt="blok.logo.alt" />
+            </nuxt-link>
+            <nuxt-link class="flex-grow" :to="localePath('index')">
               <span
-                class="font-handwriting pl-2 font-bold text-2xl"
+                class="font-handwriting pl-2 sm:pl-4 font-bold text-2xl"
                 :class="{ 'btn-text-top': topOfPage, 'text-gray-900': showMobile }">
                 {{ blok.name }}
               </span>

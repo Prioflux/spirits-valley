@@ -75,10 +75,10 @@ export default {
     preload: true,
     display: 'swap',
     families: {
-      'Rubik': {
+      'Montserrat': {
         wght: [400, 700],
       },
-      'Satisfy': {
+      'Kaisei Opti': {
         wght: [400]
       }
     },

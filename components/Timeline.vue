@@ -2,7 +2,7 @@
   <div v-editable="blok">
     <div>
       <img
-        class="lg:w-1/2 border-gray-100 border-b-4 rounded-sm mx-auto"
+        class="lg:w-1/2 border-gray-100 border-b-4 py-8 rounded-sm mx-auto"
         :src="blok.logo.filename"
         :alt="blok.logo.alt" />
     </div>
