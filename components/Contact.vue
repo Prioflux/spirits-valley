@@ -64,7 +64,7 @@
             @submit.prevent="sendMessage"
           >
             <div class="col-span-2 md:col-span-1">
-              <label for="email" class="block text-sm font-medium text-gray-700">{{ blok.email_label }}</label>
+              <label for="email" class="input-label">{{ blok.email_label }}</label>
               <div class="mt-1">
                 <input
                   id="email"
@@ -93,7 +93,7 @@
             </div>
             <div class="col-span-2 md:col-span-1">
               <div class="flex justify-between">
-                <label for="phone" class="block text-sm font-medium text-gray-700">{{ blok.phone_label }}</label>
+                <label for="phone" class="input-label">{{ blok.phone_label }}</label>
                 <span class="text-sm text-gray-500">{{ blok.optional }}</span>
               </div>
               <div class="mt-1">
@@ -121,7 +121,7 @@
                       class="cursor-pointer focus:ring-gray-500 h-4 w-4 text-gray-900 border-gray-300 rounded">
                   </div>
                   <div class="ml-3 text-sm">
-                    <label for="event" class="cursor-pointer block text-sm font-medium text-gray-700">{{ blok.event_label }}</label>
+                    <label for="event" class="cursor-pointer input-label">{{ blok.event_label }}</label>
                   </div>
                 </div>
               </div>
@@ -139,13 +139,13 @@
                       class="cursor-pointer focus:ring-gray-500 h-4 w-4 text-gray-900 border-gray-300 rounded">
                   </div>
                   <div class="ml-3 text-sm">
-                    <label for="tour" class="cursor-pointer block text-sm font-medium text-gray-700">{{ blok.tour_label }}</label>
+                    <label for="tour" class="cursor-pointer input-label">{{ blok.tour_label }}</label>
                   </div>
                 </div>
               </div>
             </div>
             <div v-if="form.tour.bookTour" class="col-span-2">
-              <label for="arrangement" class="block text-sm font-medium text-gray-700">{{ blok.arrangement_label }}</label>
+              <label for="arrangement" class="input-label">{{ blok.arrangement_label }}</label>
               <v-select
                 id="arrangement"
                 v-model="$v.form.tour.arrangement.$model"
@@ -163,7 +163,7 @@
             </div>
             <div v-if="form.tour.bookTour && $v.form.tour.arrangement.$model" class="col-span-2 md:col-span-1">
               <div class="flex justify-between">
-                <label for="guests" class="block text-sm font-medium text-gray-700">{{ blok.guests_1_label }}</label>
+                <label for="guests" class="input-label">{{ blok.guests_1_label }}</label>
               </div>
               <div class="mt-1">
                 <input
@@ -187,7 +187,7 @@
             </div>
             <div v-if="form.tour.bookTour && $v.form.tour.arrangement.$model" class="col-span-2 md:col-span-1">
               <div class="flex justify-between">
-                <label for="guests" class="block text-sm font-medium text-gray-700">{{ blok.guests_2_label }}</label>
+                <label for="guests" class="input-label">{{ blok.guests_2_label }}</label>
               </div>
               <div class="mt-1">
                 <input
@@ -212,7 +212,7 @@
             <div v-if="form.tour.bookTour && $v.form.tour.arrangement.$model" class="col-span-2 md:col-span-1">
               <div class="mt-4">
                 <div class="flex justify-between">
-                  <label for="guests" class="block text-sm font-medium text-gray-700">{{ blok.guests_3_label }}</label>
+                  <label for="guests" class="input-label">{{ blok.guests_3_label }}</label>
                 </div>
                 <div class="mt-1">
                   <input
@@ -256,7 +256,7 @@
               >
                 <template #default="{ inputValue, togglePopover, inputEvents }">
                   <div>
-                    <label for="date" class="block text-sm font-medium text-gray-700 w-full">{{ blok.date_label }}</label>
+                    <label for="date" class="input-label w-full">{{ blok.date_label }}</label>
                     <div class="mt-1">
                       <input 
                         id="date"
@@ -285,7 +285,7 @@
               v-if="form.tour.bookTour && $v.form.tour.arrangement.$model"
               class="col-span-2 md:col-span-1"
             >
-              <label for="timing" class="block text-sm font-medium text-gray-700">{{ blok.timing_label }}</label>
+              <label for="timing" class="input-label">{{ blok.timing_label }}</label>
               <v-select
                 id="timing"
                 v-model="$v.form.tour.timing.$model"
@@ -309,7 +309,7 @@
               <div class="flex justify-between">
                 <label
                   for="message"
-                  class="block text-sm font-medium text-gray-700"
+                  class="input-label"
                 >{{ blok.message_label }}</label>
                 <span v-if="form.tour.bookTour" class="text-sm text-gray-500">{{ blok.optional }}</span>
               </div>

@@ -20,14 +20,14 @@
           <div slot="button-next" class="swiper-button-next swiper-button-white z-20"><ArrowNarrowRightIcon /></div>
         </swiper>
         <div class="absolute inset-x-0 top-0 z-10 px-4 py-40 sm:px-6 lg:px-8 mx-auto w-3/4">
-          <h1 class="text-center text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+          <h1 class="text-center text-2xl font-bold sm:text-5xl lg:text-6xl">
             <span
               class="
                 block
                 text-white
                 w-full
                 mx-auto
-                tracking-wide
+                md:tracking-wide
                 leading-normal
                 break-words 
                 sm:break-normal
