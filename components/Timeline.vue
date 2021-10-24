@@ -1,11 +1,5 @@
 <template>
   <div v-editable="blok">
-    <div>
-      <img
-        class="lg:w-1/2 border-gray-100 border-b-4 py-8 rounded-sm mx-auto"
-        :src="blok.logo.filename"
-        :alt="blok.logo.alt" />
-    </div>
     <div class="w-full">
       <div
         class="
@@ -26,13 +20,13 @@
           :class="{ 'flex-row-reverse': index % 2 === 0 }"
         >
           <div
-            v-if="index % 2 === 0"
-            class="col-start-1 col-end-5 p-4 my-4 ml-auto"
+            class="col-start-1 col-end-5 p-4 my-8 ml-auto flex-grow"
           >
-            <Step :step="step" />
+            <Step v-if="index % 2 === 0" :step="step" />
+            <StepImage v-else :step="step" class="hidden md:block" />
           </div>
           <!-- Middle -->
-          <div class="col-start-5 col-end-6 md:mx-auto relative">
+          <div class="col-start-5 col-end-6 md:mx-auto relative flex-grow-0">
             <div class="h-full w-10 lg:w-20 flex items-center justify-center">
               <div class="h-full w-2 bg-gray-100 pointer-events-none"></div>
             </div>
@@ -60,10 +54,10 @@
           </div>
           <!-- Right -->
           <div
-            v-if="index % 2 !== 0"
-            class="col-start-6 col-end-10 p-4 rounded-xl my-4 mr-auto"
+            class="col-start-6 col-end-10 md:p-4 rounded-xl my-8 mr-auto flex-grow"
           >
-            <Step :step="step" />
+            <Step v-if="index % 2 !== 0" :step="step" />
+            <StepImage v-else :step="step" class="hidden md:block" />
           </div>
         </div>
       </div>

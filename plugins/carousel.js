@@ -14,6 +14,9 @@ const options = {
   navigation: {
     nextEl: '.swiper-button-next',
     prevEl: '.swiper-button-prev'
+  },
+  lazy: {
+    loadPrevNext: true
   }
 }
 

@@ -20,6 +20,7 @@
     "@vue-hero-icons/outline": "^1.7.2",
     "core-js": "^3.15.1",
     "nuxt": "^2.15.7",
+    "nuxt-lazy-load": "^1.2.7",
     "storyblok-nuxt": "^2.0.1",
     "swiper": "5.x",
     "then-request": "^6.0.2",

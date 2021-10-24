@@ -7,14 +7,15 @@
           class="h-screen"
           navigation>
           <swiper-slide v-for="(slide, index) in slides" :key="index" class="w-full">
-              <div class="mx-auto h-screen">
-                <div class="relative h-screen sm:overflow-hidden">
-                  <div class="absolute inset-0">
-                    <img class="h-screen w-full object-cover" :src="$options.filters.transformImage(slide, '1280x0')" :alt="slide">
-                    <div class="absolute inset-0 bg-gray-500 mix-blend-multiply"></div>
-                  </div>
+            <div class="mx-auto h-screen">
+              <div class="relative h-screen sm:overflow-hidden">
+                <div class="absolute inset-0">
+                  <img class="h-screen w-full object-cover swiper-lazy" :data-src="$options.filters.transformImage(slide, '1280x0')" alt="The Spirits Valley Gallery Image" />
+                  <div class="swiper-lazy-preloader"></div>
+                  <div class="absolute inset-0 bg-gray-500 mix-blend-multiply"></div>
                 </div>
               </div>
+            </div>
           </swiper-slide>
           <div slot="button-prev" class="swiper-button-prev swiper-button-white z-20"><ArrowNarrowLeftIcon /></div>
           <div slot="button-next" class="swiper-button-next swiper-button-white z-20"><ArrowNarrowRightIcon /></div>

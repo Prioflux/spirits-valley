@@ -2,7 +2,6 @@
   <div v-editable="blok" class="bg-gray-100">
     <div class="bg-gray-100 pb-20 pt-8">
       <div class="relative">
-        
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="max-w-lg mx-auto rounded-lg shadow-lg overflow-hidden lg:max-w-none lg:flex mt-8">
             <div class="flex-1 bg-white px-6 py-8 lg:p-12 ">
@@ -28,7 +27,7 @@
                 </ul>
               </div>
             </div>
-            <div class="py-8 px-6 text-center bg-gray-50 lg:flex-shrink-0 lg:flex lg:flex-col lg:justify-center lg:p-12">
+            <div class="py-8 px-6 text-center bg-gray-50 lg:flex-shrink-0 lg:flex lg:flex-col lg:justify-center lg:p-12 lg:max-w-xl">
               <p class="text-2xl leading-6 font-medium text-gray-900 break-normal">
                 {{ blok.price_title }}
               </p>

@@ -53,7 +53,7 @@
           <div class="relative inline-block text-left">
             <div>
               <button
-                id="menu-button"
+                id="activities-dropdown"
                 type="button"
                 class="inline-flex btn-text btn-focus"
                 :class="{'btn-text-top': topOfPage, 'btn-text-color': !topOfPage }"
@@ -81,7 +81,7 @@
                 class="origin-top-right absolute right-0 mt-2 w-44 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
                 role="menu"
                 aria-orientation="vertical"
-                aria-labelledby="menu-button"
+                aria-labelledby="activities-dropdown"
                 tabindex="-1"
                 @mouseover="showActivities = true"
                 @mouseleave="showActivities = false"
@@ -106,7 +106,7 @@
           <div class="relative inline-block text-left">
             <div>
               <button
-                id="menu-button"
+                id="languages-dropdown"
                 type="button"
                 class="inline-flex btn-text btn-focus"
                 :class="{'btn-text-top': topOfPage, 'btn-text-color': !topOfPage }"
@@ -134,7 +134,7 @@
                 class="origin-top-right absolute right-0 mt-2 w-32 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
                 role="menu"
                 aria-orientation="vertical"
-                aria-labelledby="menu-button"
+                aria-labelledby="languages-dropdown"
                 tabindex="-1"
                 @mouseover="showLanguages = true"
                 @mouseleave="showLanguages = false"

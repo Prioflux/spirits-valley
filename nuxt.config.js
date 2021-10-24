@@ -28,6 +28,7 @@ export default {
       { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
       { rel: 'manifest', href: '/site.webmanifest' },
       { rel: 'preconnect', href: 'https://fonts.gstatic.com/', crossorigin: 'anonymous' },
+      { rel: 'preconnect', href: '//img2.storyblok.com' },
     ],
     script: [
       {
@@ -96,7 +97,8 @@ export default {
       },
     ],
     '@nuxtjs/i18n',
-    '@nuxtjs/sitemap'
+    '@nuxtjs/sitemap',
+    'nuxt-lazy-load',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
