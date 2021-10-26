@@ -72,6 +72,10 @@ export default {
 </script>
 
 <style scoped>
+.tinybox__content__image__caption {
+  font-size: 0.8rem !important;
+}
+
 .swiper-button-next::after, .swiper-button-prev::after {
     content: "";
 }

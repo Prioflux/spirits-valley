@@ -20,13 +20,13 @@
           :class="{ 'flex-row-reverse': index % 2 === 0 }"
         >
           <div
-            class="col-start-1 col-end-5 p-4 my-8 ml-auto flex-grow"
+            class="col-start-1 col-end-5 md:p-4 my-8 ml-auto flex-grow"
           >
             <Step v-if="index % 2 === 0" :step="step" />
             <StepImage v-else :step="step" class="hidden md:block" />
           </div>
           <!-- Middle -->
-          <div class="col-start-5 col-end-6 md:mx-auto relative flex-grow-0">
+          <div class="col-start-5 col-end-6 md:mx-auto relative flex-grow-0 pr-4 md:pr-0">
             <div class="h-full w-10 lg:w-20 flex items-center justify-center">
               <div class="h-full w-2 bg-gray-100 pointer-events-none"></div>
             </div>
@@ -93,3 +93,9 @@ export default {
   }
 }
 </script>
+
+<style>
+.tinybox__content__image__caption {
+  font-size: 0.8rem !important;
+}
+</style>
