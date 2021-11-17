@@ -47,7 +47,7 @@
               "
             >
               <component
-                :is="step.icon"
+                :is="step.icon.trim()"
                 class="h-full w-full lg:h-4/5 lg:w-4/5 p-2"
               />
             </div>
