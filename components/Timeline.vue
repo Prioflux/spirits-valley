@@ -73,6 +73,9 @@ import {
   BookmarkAltIcon,
   CollectionIcon,
   TruckIcon,
+  FilterIcon,
+  AnnotationIcon,
+  InformationCircleIcon,
 } from '@vue-hero-icons/outline'
 
 export default {
@@ -84,6 +87,9 @@ export default {
     BookmarkAltIcon,
     CollectionIcon,
     TruckIcon,
+    FilterIcon,
+    AnnotationIcon,
+    InformationCircleIcon,
   },
   props: {
     blok: {
