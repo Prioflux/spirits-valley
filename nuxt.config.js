@@ -1,7 +1,7 @@
-import getMetadata from './utils/metadata'
+import getMetadata from './utils/metadata';
 
-const meta = getMetadata()
-const { NODE_ENV, BASE_URL, STORYBLOK_KEY } = process.env
+const meta = getMetadata();
+const { NODE_ENV, BASE_URL, STORYBLOK_KEY } = process.env;
 
 export default {
   // Target: https://go.nuxtjs.dev/config-target
@@ -15,28 +15,62 @@ export default {
     },
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      {
+        name: 'viewport',
+        content: 'width=device-width, initial-scale=1',
+      },
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' },
       ...meta,
     ],
     link: [
-      { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
-      { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
-      { rel: 'icon', type: 'image/png', sizes: '192x192', href: '/android-chrome-192x192.png' },
-      { rel: 'icon', type: 'image/png', sizes: '512x512', href: '/android-chrome-512x512.png' },
-      { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '32x32',
+        href: '/favicon-32x32.png',
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '16x16',
+        href: '/favicon-16x16.png',
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '192x192',
+        href: '/android-chrome-192x192.png',
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '512x512',
+        href: '/android-chrome-512x512.png',
+      },
+      {
+        rel: 'apple-touch-icon',
+        sizes: '180x180',
+        href: '/apple-touch-icon.png',
+      },
       { rel: 'manifest', href: '/site.webmanifest' },
-      { rel: 'preconnect', href: 'https://fonts.gstatic.com/', crossorigin: 'anonymous' },
+      {
+        rel: 'preconnect',
+        href: 'https://fonts.gstatic.com/',
+        crossorigin: 'anonymous',
+      },
       { rel: 'preconnect', href: '//img2.storyblok.com' },
     ],
     script: [
       {
-        src: NODE_ENV === 'production' ? '/js/script.js' : 'https://plausible.io/js/plausible.js',
+        src:
+          NODE_ENV === 'production'
+            ? '/js/script.js'
+            : 'https://plausible.io/js/plausible.js',
         defer: true,
         'data-domain': 'thespiritsvalley.com',
-      }
-    ]
+      },
+    ],
   },
 
   publicRuntimeConfig: {
@@ -76,12 +110,12 @@ export default {
     preload: true,
     display: 'swap',
     families: {
-      'Montserrat': {
+      Montserrat: {
         wght: [400, 700],
       },
       'Kaisei Opti': {
-        wght: [400]
-      }
+        wght: [400],
+      },
     },
   },
 
@@ -116,7 +150,9 @@ export default {
     },
     detectBrowserLanguage: {
       useCookie: true,
-      onlyOnRoot: true, // recommended
+      redirectOn: 'root',
+      cookieCrossOrigin: true,
+      alwaysRedirect: true,
     },
     locales: [
       {
@@ -144,4 +180,4 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
-}
+};
