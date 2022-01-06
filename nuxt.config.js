@@ -1,7 +1,8 @@
 import getMetadata from './utils/metadata';
 
 const meta = getMetadata();
-const { NODE_ENV, BASE_URL, STORYBLOK_KEY } = process.env;
+const { NODE_ENV, BASE_URL, STORYBLOK_KEY, GOOGLE_ANALYTICS_ID } =
+  process.env;
 
 export default {
   // Target: https://go.nuxtjs.dev/config-target
@@ -102,7 +103,12 @@ export default {
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
     '@nuxtjs/google-fonts',
+    '@nuxtjs/google-analytics',
   ],
+
+  googleAnalytics: {
+    id: GOOGLE_ANALYTICS_ID,
+  },
 
   googleFonts: {
     prefetch: true,
