@@ -139,6 +139,7 @@ export default {
     '@nuxtjs/i18n',
     '@nuxtjs/sitemap',
     'nuxt-lazy-load',
+    ['nuxt-cookie-control', { controlButton: false }],
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -182,6 +183,124 @@ export default {
   sitemap: {
     hostname: BASE_URL,
     gzip: true,
+  },
+
+  cookies: {
+    locales: ['en', 'nl', 'fr'],
+    controlButton: false,
+    colors: {
+      checkboxActiveBackground: '#22c55e',
+      checkboxInactiveBackground: '#ef4444',
+    },
+    text: {
+      barTitle: 'Cookies',
+      locale: {
+        en: {
+          barDescription:
+            'We use our own cookies and third-party cookies to improve your experience and better understand how you use our website, with a view to improving the services we offer. If you continue browsing, we consider that you have accepted the cookies.',
+          acceptAll: 'Accept all',
+          declineAll: 'Delete all',
+          manageCookies: 'Manage cookies',
+          unsaved: 'You have unsaved settings',
+          close: 'Close',
+          save: 'Save',
+          necessary: 'Necessary cookies',
+          optional: 'Optional cookies',
+          functional: 'Functional cookies',
+          blockedIframe:
+            'To see this, please enable functional cookies',
+          here: 'here',
+        },
+        nl: {
+          barDescription:
+            'We gebruiken onze eigen cookies en cookies van derden om uw ervaring te verbeteren en beter te begrijpen hoe u onze website gebruikt, met het oog op het verbeteren van de diensten die wij aanbieden. Als je doorgaat met browsen, gaan we ervan uit dat je de cookies hebt geaccepteerd.',
+          acceptAll: 'Alles accepteren',
+          declineAll: 'Alles verwijderen',
+          manageCookies: 'Cookies beheren',
+          unsaved: 'Je hebt niet opgeslagen gegevens',
+          close: 'Sluiten',
+          save: 'Opslaan',
+          necessary: 'Noodzakelijke cookies',
+          optional: 'Optionele cookies',
+          functional: 'Functionele cookies',
+          blockedIframe:
+            'Gelieve functionele cookies te aanvaarden om dit te zien',
+          here: 'hier',
+        },
+        fr: {
+          barDescription:
+            "Nous utilisons nos propres cookies et des cookies tiers pour améliorer votre expérience et mieux comprendre comment vous utilisez notre site Web, dans le but d'améliorer les services que nous proposons. Si vous continuez à naviguer, nous considérons que vous avez accepté les cookies.",
+          acceptAll: 'Tout accepter',
+          declineAll: 'Supprimer tout',
+          manageCookies: 'Gérer les cookies',
+          unsaved: 'Vous avez des paramètres non enregistrés',
+          close: 'Fermer',
+          save: 'Enregistrer',
+          necessary: 'Cookies nécessaires',
+          optional: 'Cookies facultatifs',
+          functional: 'Cookies fonctionnels',
+          blockedIframe:
+            'Pour voir cela, veuillez activer les cookies fonctionnels',
+          here: 'ici',
+        },
+      },
+    },
+    necessary: [
+      {
+        // if multilanguage
+        name: {
+          en: 'Default Cookies',
+          nl: 'Standaard Cookies',
+          fr: 'Cookies par défaut',
+        },
+        // if multilanguage
+        description: {
+          en: 'Used for cookie control.',
+        },
+        cookies: [
+          'cookie_control_consent',
+          'cookie_control_enabled_cookies',
+        ],
+      },
+      {
+        // if multilanguage
+        name: {
+          en: 'Language Cookies',
+          nl: 'Taal Cookies',
+          fr: 'Cookies de langue',
+        },
+        // if multilanguage
+        description: {
+          en: 'Used for language preferences.',
+        },
+        cookies: ['i18n_redirected'],
+      },
+    ],
+    optional: [
+      {
+        name: 'Google Analytics',
+        identifier: 'ga',
+        // if multilanguage
+        description: {
+          en: 'Analytics to help us understand how users interact with our website',
+          nl: 'Analytics om ons te helpen begrijpen hoe gebruikers omgaan met onze website',
+          fr: 'Des analyses pour nous aider à comprendre comment les utilisateurs interagissent avec notre site Web',
+        },
+
+        initialState: true,
+        src: 'https://www.googletagmanager.com/gtag/js?id=<API-KEY>',
+        async: true,
+        cookies: ['_ga', '_gat', '_gid'],
+        accepted: () => {
+          window.$nuxt.$ga.enable();
+          window.$nuxt.$ga.page(window.$nuxt.$route.path); // Track current route
+        },
+        declined: () => {
+          window.$nuxt.$ga.disable();
+          window.$nuxt.$cookies.remove('ga'); // Remove any existing Google Analytics cookies
+        },
+      },
+    ],
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

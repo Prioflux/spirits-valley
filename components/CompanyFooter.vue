@@ -16,14 +16,23 @@
           &copy; {{ currentYear }} {{ blok.name }}
         </p>
         <nav
-          class="-mx-5 -my-2 flex flex-wrap justify-center"
+          class="
+            flex flex-col flex-wrap
+            justify-center
+            items-center
+            mt-2
+            space-y-2
+          "
           aria-label="Footer"
         >
           <nuxt-link
-            class="my-5 text-white hover:underline"
+            class="simple-link"
             :to="localePath('privacy-policy')"
             >{{ blok.privacy_policy }}</nuxt-link
           >
+          <button class="simple-link" @click="manageCookies">
+            {{ blok.manage_cookies }}
+          </button>
         </nav>
       </div>
     </footer>
@@ -42,6 +51,11 @@ export default {
   computed: {
     currentYear() {
       return new Date().getFullYear();
+    },
+  },
+  methods: {
+    manageCookies() {
+      this.$cookies.modal = true;
     },
   },
 };
