@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://thespiritsvalley.com/sitemap.xml
+Sitemap: https://www.thespiritsvalley.com/sitemap.xml

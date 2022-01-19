@@ -1,8 +1,7 @@
 import getMetadata from './utils/metadata';
 
 const meta = getMetadata();
-const { NODE_ENV, BASE_URL, STORYBLOK_KEY, GOOGLE_ANALYTICS_ID } =
-  process.env;
+const { BASE_URL, STORYBLOK_KEY, GOOGLE_ANALYTICS_ID } = process.env;
 
 export default {
   // Target: https://go.nuxtjs.dev/config-target
@@ -61,16 +60,6 @@ export default {
         crossorigin: 'anonymous',
       },
       { rel: 'preconnect', href: '//img2.storyblok.com' },
-    ],
-    script: [
-      {
-        src:
-          NODE_ENV === 'production'
-            ? '/js/script.js'
-            : 'https://plausible.io/js/plausible.js',
-        defer: true,
-        'data-domain': 'thespiritsvalley.com',
-      },
     ],
   },
 

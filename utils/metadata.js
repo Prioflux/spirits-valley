@@ -1,14 +1,14 @@
-import transformImage from './transformImage.js'
+import transformImage from './transformImage.js';
 
-const type = 'website'
-const url = 'https://www.thespiritsvalley.com'
-const title = 'The Spirits Valley'
+const type = 'website';
+const url = 'https://www.thespiritsvalley.com';
+const title = 'The Spirits Valley';
 const description =
-  "Op de site van het Oud Pompgebouw (1860) verenigt 'The Spirits Valley' een aantal bedrijven. Je kan hier terecht voor groepsrondleidingen in het historisch pand en de gevestigde ambachtelijke stokerij"
+  "Op de site van het Oud Pompgebouw (1860) verenigt 'The Spirits Valley' een aantal bedrijven. Je kan hier terecht voor groepsrondleidingen in het historisch pand en de gevestigde ambachtelijke stokerij";
 const image = transformImage(
   'https://a.storyblok.com/f/120756/1172x512/ad1111158b/logo.png',
-  'fit-in/1200x630/filters:fill(transparent):format(png)'
-)
+  'fit-in/1200x630/filters:fill(white):format(png)',
+);
 
 export default (meta) => {
   return [
@@ -44,7 +44,7 @@ export default (meta) => {
         (meta &&
           transformImage(
             meta.og_image,
-            'fit-in/1200x630/filters:fill(transparent):format(png)'
+            'fit-in/1200x630/filters:fill(transparent):format(png)',
           )) ||
         image,
     },
@@ -75,9 +75,9 @@ export default (meta) => {
         (meta &&
           transformImage(
             meta.twitter_image,
-            'fit-in/1200x630/filters:fill(transparent):format(png)'
+            'fit-in/1200x630/filters:fill(transparent):format(png)',
           )) ||
         image,
     },
-  ]
-}
+  ];
+};

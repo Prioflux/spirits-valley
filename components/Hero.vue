@@ -1,94 +1,54 @@
 <template>
-  <div v-editable="blok" class="h-screen">
-    <client-only>
-      <div class="relative">
-        <div class="absolute inset-x-0 bottom-0 h-screen bg-gray-100"></div>
-        <swiper
-          class="h-screen"
-          navigation>
-          <swiper-slide v-for="(slide, index) in slides" :key="index" class="w-full">
-            <div class="mx-auto h-screen">
-              <div class="relative h-screen sm:overflow-hidden">
-                <div class="absolute inset-0">
-                  <img class="h-screen w-full object-cover swiper-lazy" :data-src="$options.filters.transformImage(slide, '1280x0')" alt="The Spirits Valley Gallery Image" />
-                  <div class="swiper-lazy-preloader"></div>
-                  <div class="absolute inset-0 bg-gray-500 mix-blend-multiply"></div>
-                </div>
-              </div>
-            </div>
-          </swiper-slide>
-          <div slot="button-prev" class="swiper-button-prev swiper-button-white z-20"><ArrowNarrowLeftIcon /></div>
-          <div slot="button-next" class="swiper-button-next swiper-button-white z-20"><ArrowNarrowRightIcon /></div>
-        </swiper>
-        <div class="absolute inset-x-0 top-0 z-10 px-4 py-40 sm:px-6 lg:px-8 mx-auto w-3/4">
-          <h1 class="text-center text-2xl font-bold sm:text-5xl lg:text-6xl">
-            <span
-              class="
-                block
-                text-white
-                w-full
-                mx-auto
-                md:tracking-wide
-                leading-normal
-                break-words 
-                sm:break-normal
-                lg:w-3/4"
-              >{{ blok.baseline}}</span>
-          </h1>
+<div v-editable="blok" class="relative h-screen">
+  <div class="absolute inset-x-0 bottom-0 h-screen bg-gray-100"></div>
+    <div class="mx-auto h-screen">
+      <div class="relative h-screen sm:overflow-hidden">
+        <div class="absolute inset-0">
+          <img class="h-screen w-full object-cover" :src="$options.filters.transformImage(blok.bg_image.filename, '1280x0')" :alt="blok.bg_image.alt">
+          <div class="absolute inset-0 bg-gray-500 mix-blend-multiply"></div>
         </div>
-        <div class="absolute inset-x-0 bottom-0 z-10 px-4 py-9 sm:px-6 lg:px-8">
-          <div class="text-white">
-            <span class="scroll-icon"></span>
-          </div>
+        <div class="relative h-screen px-4 py-32 sm:px-6 sm:py-24 lg:py-40 lg:px-8">
+          <h1 class="text-center text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl font-handwriting">
+            <span class="block text-white lg:w-1/2 mx-auto">{{ blok.baseline }}</span>
+          </h1>
+          <p class="mt-6 max-w-lg mx-auto text-center text-xl text-gray-200 sm:max-w-3xl font-handwriting">
+            {{ blok.description }}
+          </p>
         </div>
       </div>
-    </client-only>
-  </div>  
+    </div>
+    <div class="absolute inset-x-0 bottom-0 z-10 px-4 py-9 sm:px-6 lg:px-8">
+      <div class="text-white">
+        <span class="scroll-icon"></span>
+      </div>
+    </div>
+  </div>
+</div>
 </template>
 
 <script>
-import { ArrowNarrowLeftIcon, ArrowNarrowRightIcon } from "@vue-hero-icons/outline"
 
 export default {
-  name: "Hero",
-  components: {
-    ArrowNarrowLeftIcon,
-    ArrowNarrowRightIcon
-  },
+  name: 'Hero',
   props: {
     blok: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   computed: {
     slides() {
-      return this.blok.images.map(item => {
-        return item.image.filename
-      })
-    }
-  }
-}
+      return this.blok.images.map((item) => {
+        return item.image.filename;
+      });
+    },
+  },
+};
 </script>
 
 <style scoped>
-.tinybox__content__image__caption {
-  font-size: 0.8rem !important;
-}
-
-.swiper-button-next::after, .swiper-button-prev::after {
-    content: "";
-}
-
-.swiper-button-prev {
-  left: 25px;
-}
-
-.swiper-button-next {
-  right: 25px;
-}
-
-.scroll-text, .scroll-icon {
+.scroll-text,
+.scroll-icon {
   position: absolute;
   left: 50%;
 }

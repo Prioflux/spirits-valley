@@ -20,7 +20,7 @@ export default {
         ? 'draft'
         : 'published';
     const locale =
-      context.app.i18n.locale === 'nl' ? '' : context.app.i18n.locale
+      context.app.i18n.locale === 'nl' ? '' : context.app.i18n.locale;
     return context.app.$storyapi
       .get('cdn/stories/home', {
         version,
@@ -48,6 +48,9 @@ export default {
     return {
       story: { content: {} },
     };
+  },
+  mounted() {
+    console.log(this.story.content);
   },
 };
 </script>

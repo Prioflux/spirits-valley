@@ -12,7 +12,7 @@
   }
 
   .btn {
-    @apply transition-all ease-in-out font-bold border border-transparent shadow-sm rounded-md hover:rounded-3xl focus:rounded-3xl hover:bg-gray-100 focus:bg-gray-100 shadow-sm;
+    @apply transition-all ease-in-out font-bold border border-transparent shadow-sm rounded-md hover:rounded-3xl focus:rounded-3xl hover:bg-gray-100 focus:bg-gray-100;
   }
 }
 
