@@ -59,12 +59,14 @@ const handler = async (event) => {
     from: `${COMPANY_NAME} <${COMPANY_EMAIL_ADDRESS}>`,
     replyTo: data.email,
     subject: `Nieuw bericht van ${data.email} op thespiritsvalley.com`,
-    html: `<b>Email: </b>${data.email}
+    html: `<h4><b>Bericht ontvangen via contactformulier</b></h4>
+    <b>Email: </b>${data.email}
     ${phone}
     ${bookEvent}
     ${bookTour}
     ${bookTourMsg}
     <p><b>Verzonden op ${new Date().toLocaleString('nl')}</b></p>
+    <br />
     ${message}`,
   }
 
