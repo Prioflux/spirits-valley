@@ -1,45 +1,87 @@
 <template>
   <section v-editable="blok" class="c-container">
-    <div class="py-24 mx-auto flex flex-wrap">
-      <div class="flex flex-wrap md:-m-2 -m-1">
+    <div class="flex flex-wrap py-24 mx-auto">
+      <div class="flex flex-wrap -m-1 md:-m-2">
         <div class="flex flex-wrap w-full md:w-1/2">
-          <div class="md:p-2 p-1 w-1/2">
+          <div class="w-1/2 p-1 md:p-2">
             <img
-              class="w-full object-cover h-full object-center block rounded-lg shadow-md"
-              :src="$options.filters.transformImage(blok.images[0].image.filename, blok.images[0].dimensions)"
-              :alt="blok.images[0].image.alt">
+              v-if="images[0]"
+              class="block object-cover object-center w-full h-full rounded-lg shadow-md "
+              :src="
+                $options.filters.transformImage(
+                  images[0].image,
+                  '501x301',
+                )
+              "
+              :alt="images[0].alt"
+            />
           </div>
-          <div class="md:p-2 p-1 w-1/2">
+          <div class="w-1/2 p-1 md:p-2">
             <img
-              class="w-full object-cover h-full object-center block rounded-lg shadow-md"
-              :src="$options.filters.transformImage(blok.images[1].image.filename, blok.images[1].dimensions)"
-              :alt="blok.images[1].image.alt">
+              v-if="images[1]"
+              class="block object-cover object-center w-full h-full rounded-lg shadow-md "
+              :src="
+                $options.filters.transformImage(
+                  images[1].image,
+                  '501x301',
+                )
+              "
+              :alt="images[1].alt"
+            />
           </div>
-          <div class="md:p-2 p-1 w-full">
+          <div class="w-full p-1 md:p-2">
             <img
-              class="w-full h-full object-cover object-center block rounded-lg shadow-md"
-              :src="$options.filters.transformImage(blok.images[2].image.filename, blok.images[2].dimensions)"
-              :alt="blok.images[2].image.alt">
+              v-if="images[2]"
+              class="block object-cover object-center w-full h-full rounded-lg shadow-md "
+              :src="
+                $options.filters.transformImage(
+                  images[2].image,
+                  '601x361',
+                )
+              "
+              :alt="images[2].alt"
+            />
           </div>
         </div>
         <div class="flex flex-wrap w-full md:w-1/2">
-          <div class="md:p-2 p-1 w-full">
+          <div class="w-full p-1 md:p-2">
             <img
-              class="w-full h-full object-cover object-center block rounded-lg shadow-md"
-              :src="$options.filters.transformImage(blok.images[3].image.filename, blok.images[3].dimensions)"
-              :alt="blok.images[3].image.alt">
+              v-if="images[3]"
+              class="block object-cover object-center w-full h-full rounded-lg shadow-md "
+              :src="
+                $options.filters.transformImage(
+                  images[3].image,
+                  '601x361',
+                )
+              "
+              :alt="images[3].alt"
+            />
           </div>
-          <div class="md:p-2 p-1 w-1/2">
+          <div class="w-1/2 p-1 md:p-2">
             <img
-              class="w-full object-cover h-full object-center block rounded-lg shadow-md"
-              :src="$options.filters.transformImage(blok.images[4].image.filename, blok.images[4].dimensions)"
-              :alt="blok.images[4].image.alt">
+              v-if="images[4]"
+              class="block object-cover object-center w-full h-full rounded-lg shadow-md "
+              :src="
+                $options.filters.transformImage(
+                  images[4].image,
+                  '501x301',
+                )
+              "
+              :alt="images[4].alt"
+            />
           </div>
-          <div class="md:p-2 p-1 w-1/2">
+          <div class="w-1/2 p-1 md:p-2">
             <img
-              class="w-full object-cover h-full object-center block rounded-lg shadow-md"
-              :src="$options.filters.transformImage(blok.images[5].image.filename, blok.images[5].dimensions)"
-              :alt="blok.images[5].image.alt">
+              v-if="images[5]"
+              class="block object-cover object-center w-full h-full rounded-lg shadow-md "
+              :src="
+                $options.filters.transformImage(
+                  images[5].image,
+                  '501x301',
+                )
+              "
+              :alt="images[5].alt"
+            />
           </div>
         </div>
       </div>
@@ -49,12 +91,23 @@
 
 <script>
 export default {
-  name: "Gallery",
+  name: 'Gallery',
   props: {
     blok: {
       type: Object,
-      required: true
-    }
-  }
-}
+      required: true,
+    },
+  },
+  computed: {
+    images() {
+      return this.blok.images.map((item) => {
+        return {
+          image: item?.image?.filename,
+          alt: item?.image?.alt,
+          dimensions: item?.dimensions,
+        };
+      });
+    },
+  },
+};
 </script>

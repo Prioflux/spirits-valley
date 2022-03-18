@@ -44,7 +44,7 @@ export default (meta) => {
         (meta &&
           transformImage(
             meta.og_image,
-            'fit-in/1200x630/filters:fill(transparent):format(png)',
+            'fit-in/1200x630/filters:fill(white):format(png)',
           )) ||
         image,
     },
@@ -75,7 +75,7 @@ export default (meta) => {
         (meta &&
           transformImage(
             meta.twitter_image,
-            'fit-in/1200x630/filters:fill(transparent):format(png)',
+            'fit-in/1200x630/filters:fill(white):format(png)',
           )) ||
         image,
     },
