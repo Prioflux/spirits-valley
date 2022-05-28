@@ -271,14 +271,26 @@
                 </nuxt-link>
 
                 <nuxt-link
+                  v-if="blok.show_trips"
                   to="/dagtrips"
                   class="flex items-center p-3 -m-3 hover:bg-gray-50"
-                  v-if="blok.show_trips"
                 >
                   <LocationMarkerIcon />
 
                   <span class="ml-3 text-base font-medium">
                     {{ blok.trips }}
+                  </span>
+                </nuxt-link>
+
+                <nuxt-link
+                  v-if="blok.show_aperobar"
+                  to="/aperobar-de-stokerie"
+                  class="flex items-center p-3 -m-3 hover:bg-gray-50"
+                >
+                  <FlagIcon />
+
+                  <span class="ml-3 text-base font-medium">
+                    {{ blok.aperobar }}
                   </span>
                 </nuxt-link>
 
@@ -320,6 +332,7 @@ import {
   MapIcon,
   KeyIcon,
   LocationMarkerIcon,
+  FlagIcon,
   ChevronDownIcon,
 } from '@vue-hero-icons/outline';
 
@@ -332,6 +345,7 @@ export default {
     MapIcon,
     KeyIcon,
     LocationMarkerIcon,
+    FlagIcon,
     ChevronDownIcon,
   },
   props: {
@@ -373,6 +387,15 @@ export default {
         };
 
         activities.push(trips);
+      }
+
+      if (this.blok.show_aperobar) {
+        const aperobar = {
+          label: this.blok.aperobar,
+          slug: 'aperobar-de-stokerie',
+        };
+
+        activities.push(aperobar);
       }
 
       return activities;
