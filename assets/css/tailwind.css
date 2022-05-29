@@ -116,4 +116,8 @@
   .step-title {
     @apply py-2 mt-1 text-2xl font-bold font-handwriting text-gray-900 sm:text-2xl sm:tracking-tight lg:text-4xl;
   }
+
+  #apero-contact a {
+    @apply font-bold  hover:underline;
+  }
 }

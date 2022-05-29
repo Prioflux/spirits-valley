@@ -29,6 +29,12 @@ module.exports = {
       cursor: {
         'zoom-in': 'zoom-in',
       },
+      height: {
+        fit: 'fit-content',
+      },
+      width: {
+        fit: 'fit-content',
+      },
     },
   },
   variants: {

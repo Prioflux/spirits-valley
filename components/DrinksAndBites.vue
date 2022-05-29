@@ -1,161 +1,91 @@
 <template>
-  <!-- This example requires Tailwind CSS v2.0+ -->
-  <div class="relative pt-16 pb-32 overflow-hidden bg-white">
-    <div class="relative">
-      <div
-        class=" lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:grid-flow-col-dense lg:gap-24"
-      >
+  <div
+    class="relative pt-16 pb-32 overflow-hidden bg-white c-container"
+  >
+    <div class="relative mt-12">
+      <div class="lg:flex">
         <div
-          class="max-w-xl px-4 mx-auto  sm:px-6 lg:py-16 lg:max-w-none lg:mx-0 lg:px-0"
+          class="relative z-10 p-8 mx-auto shadow-lg  bg-opacity-90 bg-primary-stokerie rounded-tl-xl rounded-tr-xl lg:rounded-xl h-fit lg:-right-28 lg:-top-12"
         >
-          <div>
-            <div>
-              <span
-                class="flex items-center justify-center w-12 h-12 bg-indigo-600 rounded-md "
+          <div class="absolute -top-6 border-gray-50">
+            <span
+              class="flex items-center justify-center w-16 h-16 bg-white border rounded-md "
+            >
+              <svg
+                class="w-10 h-10 text-primary-stokerie"
+                viewBox="0 0 24 24"
               >
-                <!-- Heroicon name: outline/inbox -->
-                <svg
-                  class="w-6 h-6 text-white"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="2"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"
-                  />
-                </svg>
-              </span>
-            </div>
-            <div class="mt-6">
-              <h2
-                class="text-3xl font-extrabold tracking-tight text-gray-900 "
-              >
-                Stay on top of customer support
-              </h2>
-              <p class="mt-4 text-lg text-gray-500">
-                Semper curabitur ullamcorper posuere nunc sed. Ornare
-                iaculis bibendum malesuada faucibus lacinia porttitor.
-                Pulvinar laoreet sagittis viverra duis. In venenatis
-                sem arcu pretium pharetra at. Lectus viverra dui
-                tellus ornare pharetra.
-              </p>
-              <div class="mt-6">
-                <a
-                  href="#"
-                  class="inline-flex px-4 py-2 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm  hover:bg-indigo-700"
-                >
-                  Get started
-                </a>
-              </div>
-            </div>
+                <path
+                  fill="currentColor"
+                  d="M7.5,7L5.5,5H18.5L16.5,7M11,13V19H6V21H18V19H13V13L21,5V3H3V5L11,13Z"
+                />
+              </svg>
+            </span>
           </div>
-          <div class="pt-6 mt-8 border-t border-gray-200">
-            <blockquote>
-              <div>
-                <p class="text-base text-gray-500">
-                  &ldquo;Cras velit quis eros eget rhoncus lacus
-                  ultrices sed diam. Sit orci risus aenean curabitur
-                  donec aliquet. Mi venenatis in euismod ut.&rdquo;
-                </p>
-              </div>
-              <footer class="mt-3">
-                <div class="flex items-center space-x-3">
-                  <div class="flex-shrink-0">
-                    <img
-                      class="w-6 h-6 rounded-full"
-                      src="https://images.unsplash.com/photo-1509783236416-c9ad59bae472?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80"
-                      alt=""
-                    />
-                  </div>
-                  <div class="text-base font-medium text-gray-700">
-                    Marcia Hill, Digital Marketing Manager
-                  </div>
-                </div>
-              </footer>
-            </blockquote>
+          <div class="mt-6 lg:w-72">
+            <h2
+              class="text-4xl font-extrabold tracking-tight text-gray-900 "
+            >
+              Drinks
+            </h2>
+            <p class="mt-4 text-lg text-gray-900">
+              Geniet van het goede weer met een drankje die naast je
+              in onze stokerij gemaakt is! Drink het puur of in een
+              cocktail. Smaakt een glaasje wijn of een biertje jou
+              meer, ook daarvoor kan je bij ons terecht!
+            </p>
           </div>
         </div>
-        <div class="mt-12 sm:mt-16 lg:mt-0">
-          <div
-            class="pl-4 -mr-48  sm:pl-6 md:-mr-16 lg:px-0 lg:m-0 lg:relative lg:h-full"
-          >
+        <div>
+          <div class="relative z-0 h-full">
             <img
-              class="w-full shadow-xl  rounded-xl ring-1 ring-black ring-opacity-5 lg:absolute lg:left-0 lg:h-full lg:w-auto lg:max-w-none"
-              src="https://tailwindui.com/img/component-images/inbox-app-screenshot-1.jpg"
-              alt="Inbox user interface"
+              class="w-full shadow-xl  rounded-bl-xl rounded-br-xl lg:rounded-xl ring-1 ring-black ring-opacity-5 lg:w-auto"
+              src="https://a.storyblok.com/f/120756/6000x4000/90eeaa44be/img_9972.jpg"
+              alt="Drinks"
             />
           </div>
         </div>
       </div>
     </div>
-    <div class="mt-24">
-      <div
-        class=" lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:grid-flow-col-dense lg:gap-24"
-      >
-        <div
-          class="max-w-xl px-4 mx-auto  sm:px-6 lg:py-32 lg:max-w-none lg:mx-0 lg:px-0 lg:col-start-2"
-        >
-          <div>
-            <div>
-              <span
-                class="flex items-center justify-center w-12 h-12 bg-indigo-600 rounded-md "
-              >
-                <!-- Heroicon name: outline/sparkles -->
-                <svg
-                  class="w-6 h-6 text-white"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="2"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
-                  />
-                </svg>
-              </span>
-            </div>
-            <div class="mt-6">
-              <h2
-                class="text-3xl font-extrabold tracking-tight text-gray-900 "
-              >
-                Better understand your customers
-              </h2>
-              <p class="mt-4 text-lg text-gray-500">
-                Semper curabitur ullamcorper posuere nunc sed. Ornare
-                iaculis bibendum malesuada faucibus lacinia porttitor.
-                Pulvinar laoreet sagittis viverra duis. In venenatis
-                sem arcu pretium pharetra at. Lectus viverra dui
-                tellus ornare pharetra.
-              </p>
-              <div class="mt-6">
-                <a
-                  href="#"
-                  class="inline-flex px-4 py-2 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm  hover:bg-indigo-700"
-                >
-                  Get started
-                </a>
-              </div>
-            </div>
+    <div class="relative mt-36">
+      <div class="flex flex-col lg:flex-row">
+        <div class="order-2 lg:order-1">
+          <div class="relative z-0 h-full">
+            <img
+              class="w-full shadow-xl  rounded-bl-xl rounded-br-xl lg:rounded-xl ring-1 ring-black ring-opacity-5 lg:w-auto"
+              src="https://a.storyblok.com/f/120756/4000x1800/8df883b750/img_20220308_104745.jpg"
+              alt="Bites"
+            />
           </div>
         </div>
-        <div class="mt-12 sm:mt-16 lg:mt-0 lg:col-start-1">
-          <div
-            class="pr-4 -ml-48  sm:pr-6 md:-ml-16 lg:px-0 lg:m-0 lg:relative lg:h-full"
-          >
-            <img
-              class="w-full shadow-xl  rounded-xl ring-1 ring-black ring-opacity-5 lg:absolute lg:right-0 lg:h-full lg:w-auto lg:max-w-none"
-              src="https://tailwindui.com/img/component-images/inbox-app-screenshot-2.jpg"
-              alt="Customer profile user interface"
-            />
+        <div
+          class="relative z-10 order-1 p-8 mx-auto shadow-lg  bg-opacity-90 bg-primary-stokerie rounded-tl-xl rounded-tr-xl lg:rounded-xl h-fit lg:-left-28 lg:-top-12 lg:order-2"
+        >
+          <div class="absolute -top-6 border-gray-50">
+            <span
+              class="flex items-center justify-center w-16 h-16 bg-white border rounded-md "
+            >
+              <svg
+                class="w-10 h-10 text-primary-stokerie"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill="currentColor"
+                  d="M15.71 4C16.54 4 17.33 4.22 18 4.66C19.14 5.4 19.84 6.53 20 7.84C20.11 9.13 19.66 10.4 18.75 11.31C18.05 12 17.16 12.44 16.18 12.54C14.27 12.74 12.59 13.5 11.34 14.77C11.13 14.97 10.9 15 10.77 15C10.65 15 10.42 14.97 10.21 14.77L9.22 13.78C9.04 13.6 9 13.39 9 13.25C9 13 9.11 12.78 9.32 12.57C10.53 11.35 11.27 9.73 11.45 7.87C11.58 6.54 12.29 5.4 13.45 4.65C14.11 4.22 14.89 4 15.71 4M15.71 2C14.54 2 13.37 2.32 12.36 2.97C10.6 4.1 9.63 5.86 9.46 7.68C9.33 9 8.83 10.23 7.91 11.15L7.88 11.18C6.72 12.34 6.72 14.11 7.81 15.19L8.8 16.18C9.35 16.73 10.06 17 10.77 17S12.2 16.73 12.75 16.18C13.72 15.21 15 14.68 16.39 14.53C17.76 14.38 19.1 13.78 20.16 12.73C22.93 9.96 22.57 5.26 19.09 3C18.08 2.33 16.9 2 15.71 2M6.26 19.86C6.53 20.42 6.44 21.1 5.97 21.56C5.39 22.15 4.44 22.15 3.85 21.56C3.58 21.29 3.44 20.94 3.42 20.58C3.06 20.56 2.71 20.42 2.44 20.15C1.85 19.56 1.85 18.61 2.44 18.03C2.9 17.57 3.59 17.47 4.14 17.74L6.62 15.31C6.76 15.5 6.92 15.72 7.1 15.9L8.09 16.89C8.3 17.09 8.5 17.26 8.76 17.41L6.26 19.86Z"
+                />
+              </svg>
+            </span>
+          </div>
+          <div class="mt-6 lg:w-72">
+            <h2
+              class="text-4xl font-extrabold tracking-tight text-gray-900 "
+            >
+              Bites
+            </h2>
+            <p class="mt-4 text-lg text-gray-900">
+              Combineer je cocktail of biertje met een passende tapas
+              of borrelhapje.
+            </p>
           </div>
         </div>
       </div>
