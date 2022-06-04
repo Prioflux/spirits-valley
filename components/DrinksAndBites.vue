@@ -2,6 +2,13 @@
   <div
     class="relative pt-16 pb-32 overflow-hidden bg-white c-container"
   >
+    <div
+      class="absolute inset-x-0 bottom-0 z-10 px-4  py-9 sm:px-6 lg:px-8"
+    >
+      <div class="text-black">
+        <span class="scroll-icon"></span>
+      </div>
+    </div>
     <div class="relative mt-12">
       <div class="lg:flex">
         <div
@@ -22,7 +29,7 @@
               </svg>
             </span>
           </div>
-          <div class="mt-6 lg:w-72">
+          <div class="mt-6 lg:w-96">
             <h2
               class="text-4xl font-extrabold tracking-tight text-gray-900 "
             >
