@@ -33,21 +33,23 @@
             <h2
               class="text-4xl font-extrabold tracking-tight text-gray-900 "
             >
-              Drinks
+              {{ drinks.title }}
             </h2>
             <p class="mt-4 text-lg text-gray-900">
-              Geniet van het goede weer met een drankje die naast je
-              in onze stokerij gemaakt is! Drink het puur of in een
-              cocktail. Smaakt een glaasje wijn of een biertje jou
-              meer, ook daarvoor kan je bij ons terecht!
+              {{ drinks.description }}
             </p>
           </div>
         </div>
         <div>
           <div class="relative z-0 h-full">
             <img
+              :src="
+                $options.filters.transformImage(
+                  drinks.image.filename,
+                  '1280x0',
+                )
+              "
               class="w-full shadow-xl  rounded-bl-xl rounded-br-xl lg:rounded-xl ring-1 ring-black ring-opacity-5 lg:w-auto"
-              src="https://a.storyblok.com/f/120756/6000x4000/90eeaa44be/img_9972.jpg"
               alt="Drinks"
             />
           </div>
@@ -59,8 +61,13 @@
         <div class="order-2 lg:order-1">
           <div class="relative z-0 h-full">
             <img
+              :src="
+                $options.filters.transformImage(
+                  bites.image.filename,
+                  '1280x0',
+                )
+              "
               class="w-full shadow-xl  rounded-bl-xl rounded-br-xl lg:rounded-xl ring-1 ring-black ring-opacity-5 lg:w-auto"
-              src="https://a.storyblok.com/f/120756/4000x1800/8df883b750/img_20220308_104745.jpg"
               alt="Bites"
             />
           </div>
@@ -87,11 +94,10 @@
             <h2
               class="text-4xl font-extrabold tracking-tight text-gray-900 "
             >
-              Bites
+              {{ bites.title }}
             </h2>
             <p class="mt-4 text-lg text-gray-900">
-              Combineer je cocktail of biertje met een passende tapas
-              of borrelhapje.
+              {{ bites.description }}
             </p>
           </div>
         </div>
@@ -103,5 +109,19 @@
 <script>
 export default {
   name: 'DrinksAndBites',
+  props: {
+    blok: {
+      type: Object,
+      required: true,
+    },
+  },
+  computed: {
+    drinks() {
+      return this.blok.apero_features[0];
+    },
+    bites() {
+      return this.blok.apero_features[1];
+    },
+  },
 };
 </script>

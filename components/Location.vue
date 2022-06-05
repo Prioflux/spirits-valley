@@ -24,18 +24,15 @@
             <h2
               class="text-4xl font-extrabold tracking-tight text-gray-900 "
             >
-              Location
+              {{ blok.title }}
             </h2>
             <p class="mt-4 text-lg text-gray-900">
-              Je kan ons vinden in het Oud Pompgebouw te Bossuit:
-              <a
-                class="flex items-center mt-3 space-x-5 font-bold  hover:underline"
+              {{ blok.description
+              }}<a
+                class="flex items-center mt-3 space-x-5 font-bold whitespace-pre-line  hover:underline"
                 href="https://www.google.com/maps/search/?api=1&query=The+Spirits+Valley"
                 target="_blank"
-              >
-                Doorniksesteenweg 402
-                <br />
-                8583 Bossuit
+                >{{ blok.address }}
                 <svg
                   class="w-8 h-8 lg:w-12 lg:h-12"
                   viewBox="0 0 24 24"
@@ -53,8 +50,13 @@
           <div class="relative z-0 h-full">
             <img
               class="w-full shadow-xl  rounded-bl-xl rounded-br-xl lg:rounded-xl ring-1 ring-black ring-opacity-5 lg:w-auto"
-              src="https://a.storyblok.com/f/120756/6000x4000/90eeaa44be/img_9972.jpg"
-              alt="Drinks"
+              :src="
+                $options.filters.transformImage(
+                  blok.image.filename,
+                  '1280x0',
+                )
+              "
+              alt="Location"
             />
           </div>
         </div>
@@ -66,5 +68,11 @@
 <script>
 export default {
   name: 'Location',
+  props: {
+    blok: {
+      type: Object,
+      required: true,
+    },
+  },
 };
 </script>

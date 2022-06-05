@@ -4,11 +4,16 @@
       <div class="absolute inset-0">
         <img
           class="object-cover w-full h-screen"
-          src="https://a.storyblok.com/f/120756/6000x4000/35c23decfc/img_9971.jpg"
-          alt=""
+          :src="
+            $options.filters.transformImage(
+              blok.image.filename,
+              '1280x0',
+            )
+          "
+          :alt="blok.image.alt"
         />
         <div
-          class="absolute inset-0 h-screen  bg-opacity-30 bg-primary-stokerie mix-blend-multiply"
+          class="absolute inset-0 h-screen  bg-gradient-to-b from-blue-300"
           aria-hidden="true"
         ></div>
       </div>
@@ -18,14 +23,14 @@
         <h1
           class="text-5xl font-extrabold tracking-tight text-center  lg:text-6xl"
         >
-          <span class="text-gray-900">Aperobar</span>
-          <span class="text-primary-stokerie">De Stokerie</span>
+          <span class="text-gray-900">{{ blok.title }}</span>
+          <span class="text-primary-stokerie">{{ blok.name }}</span>
         </h1>
         <div
           class="flex items-center justify-center my-10 space-x-12"
         >
           <a
-            href="https://www.instagram.com/destokerie/"
+            :href="blok.instagram.url"
             target="_blank"
             title="Instagram"
             class="text-gray-900 transition-all hover:text-gray-700"
@@ -47,7 +52,7 @@
           </a>
 
           <a
-            href="https://www.facebook.com/aperobardestokerie"
+            :href="blok.facebook.url"
             target="_blank"
             title="Facebook"
             class="text-gray-900 transition-all hover:text-gray-700"

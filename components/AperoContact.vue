@@ -112,11 +112,11 @@
                 <ClockIcon class="w-8 h-8 text-white" />
               </div>
               <h2 class="mb-6 text-4xl font-bold text-gray-900">
-                Openingsuren
+                {{ blok.openingHoursTitle }}
               </h2>
               <div class="inline-grid grid-cols-1">
                 <div
-                  v-for="(day, index) in openingHours"
+                  v-for="(day, index) in blok.openingHours"
                   :key="index"
                   class="inline-grid grid-cols-2 mt-4 text-base text-gray-500 "
                 >
@@ -202,45 +202,6 @@ export default {
       return this.$storyapi.richTextResolver.render(
         this.blok.description,
       );
-    },
-    openingHours() {
-      const openingHours = [
-        {
-          name: 'Maandag',
-          open: 'Gesloten',
-        },
-        {
-          name: 'Dinsdag',
-          open: '10:00',
-          closed: '18:00',
-        },
-        {
-          name: 'Woensdag',
-          open: '10:00',
-          closed: '18:00',
-        },
-        {
-          name: 'Donderdag',
-          open: '10:00',
-          closed: '18:00',
-        },
-        {
-          name: 'Vrijdag',
-          open: '10:00',
-          closed: '18:00',
-        },
-        {
-          name: 'Zaterdag',
-          open: '10:00',
-          closed: '18:00',
-        },
-        {
-          name: 'Zondag',
-          open: '10:00',
-          closed: '18:00',
-        },
-      ];
-      return openingHours;
     },
   },
 };
