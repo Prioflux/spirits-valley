@@ -1,9 +1,10 @@
 <template>
   <div v-editable="blok" class="relative z-20 transparent">
+    <!-- Desktop Menu -->
     <div class="mx-auto min-w-screen">
       <div
         :class="{ scrolled: !topOfPage }"
-        class="top-0 flex-wrap items-center justify-between hidden w-full px-6 py-6 m-auto  lg:flex lg:fixed animated lg:justify-start lg:space-x-10"
+        class="top-0 flex-wrap items-center justify-between hidden w-full px-6 py-6 m-auto  xl:flex xl:fixed animated lg:justify-start lg:space-x-10"
       >
         <div
           class="inline-flex items-center justify-start  lg:w-0 lg:flex-1"
@@ -30,7 +31,7 @@
         </div>
         <div class="flex justify-start lg:w-0 lg:flex-1"></div>
         <div
-          class="items-center justify-end hidden space-x-10  lg:flex lg:flex-1 lg:w-0"
+          class="items-center justify-end hidden space-x-10  lg:flex lg:flex-1"
         >
           <nuxt-link
             :to="localePath('tijdlijn')"
@@ -41,6 +42,18 @@
             }"
           >
             {{ blok.history }}
+          </nuxt-link>
+
+          <nuxt-link
+            v-if="blok.show_aperobar"
+            :to="localePath('aperobar-de-stokerie')"
+            class="btn-text lg:whitespace-nowrap"
+            :class="{
+              'btn-text-top': topOfPage,
+              'btn-text-color': !topOfPage,
+            }"
+          >
+            {{ blok.aperobar }}
           </nuxt-link>
 
           <div class="relative inline-block text-left">
@@ -176,9 +189,10 @@
       </div>
     </div>
 
+    <!-- Mobile Menu -->
     <div
       :class="{ scrolled: !topOfPage || showMobile }"
-      class="fixed inset-x-0 top-0 transition origin-top-right transform  lg:hidden"
+      class="fixed inset-x-0 top-0 transition origin-top-right transform  xl:hidden"
     >
       <div class="divide-y-2 divide-gray-50">
         <div class="px-5 pt-5 pb-6">
@@ -189,7 +203,7 @@
             >
               <img
                 class="w-12"
-                :class="{ 'filter invert': topOfPage }"
+                :class="{ 'filter invert': !showMobile && topOfPage }"
                 :src="blok.logo.filename"
                 :alt="blok.logo.alt"
               />
@@ -271,14 +285,26 @@
                 </nuxt-link>
 
                 <nuxt-link
+                  v-if="blok.show_trips"
                   to="/dagtrips"
                   class="flex items-center p-3 -m-3 hover:bg-gray-50"
-                  v-if="blok.show_trips"
                 >
                   <LocationMarkerIcon />
 
                   <span class="ml-3 text-base font-medium">
                     {{ blok.trips }}
+                  </span>
+                </nuxt-link>
+
+                <nuxt-link
+                  v-if="blok.show_aperobar"
+                  to="/aperobar-de-stokerie"
+                  class="flex items-center p-3 -m-3 hover:bg-gray-50"
+                >
+                  <FlagIcon />
+
+                  <span class="ml-3 text-base font-medium">
+                    {{ blok.aperobar }}
                   </span>
                 </nuxt-link>
 
@@ -320,6 +346,7 @@ import {
   MapIcon,
   KeyIcon,
   LocationMarkerIcon,
+  FlagIcon,
   ChevronDownIcon,
 } from '@vue-hero-icons/outline';
 
@@ -332,6 +359,7 @@ export default {
     MapIcon,
     KeyIcon,
     LocationMarkerIcon,
+    FlagIcon,
     ChevronDownIcon,
   },
   props: {

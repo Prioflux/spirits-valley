@@ -1,4 +1,4 @@
-const colors = require('tailwindcss/colors')
+const colors = require('tailwindcss/colors');
 
 module.exports = {
   purge: [
@@ -15,13 +15,25 @@ module.exports = {
         transparent: 'transparent',
         current: 'currentColor',
         gray: colors.warmGray,
+        'primary-stokerie': '#e75c1a',
       },
       fontFamily: {
         sans: ['Montserrat', 'Verdana', 'sans-serif'],
-        handwriting: ['"Kaisei Opti"', 'Montserrat', 'Verdana', 'sans-serif']
+        handwriting: [
+          '"Kaisei Opti"',
+          'Montserrat',
+          'Verdana',
+          'sans-serif',
+        ],
       },
       cursor: {
-        'zoom-in': 'zoom-in'
+        'zoom-in': 'zoom-in',
+      },
+      height: {
+        fit: 'fit-content',
+      },
+      width: {
+        fit: 'fit-content',
       },
     },
   },
@@ -34,4 +46,4 @@ module.exports = {
     require('@tailwindcss/aspect-ratio'),
     require('@tailwindcss/forms'),
   ],
-}
+};
