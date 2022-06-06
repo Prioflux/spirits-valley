@@ -22,10 +22,7 @@ export default {
   },
 
   asyncData(context) {
-    const version =
-      context.query._storyblok || context.isDev
-        ? 'draft'
-        : 'published';
+    const version = 'draft';
     const locale =
       context.app.i18n.locale === 'nl' ? '' : context.app.i18n.locale;
     return context.app.$storyapi
