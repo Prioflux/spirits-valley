@@ -9,7 +9,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'spirits-valley',
+    title: 'The Spirits Valley',
     htmlAttrs: {
       lang: 'en',
     },
