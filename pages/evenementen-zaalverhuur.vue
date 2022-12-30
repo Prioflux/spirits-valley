@@ -26,7 +26,7 @@ export default {
       context.app.i18n.locale === 'nl' ? '' : context.app.i18n.locale;
 
     return context.app.$storyapi
-      .get('cdn/stories/evenementen-zaalverhuur', {
+      .get('cdn/stories/zaalverhuur', {
         version,
         language: locale,
         resolve_relations: 'globalReference.reference',

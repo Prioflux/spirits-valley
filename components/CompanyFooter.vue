@@ -34,6 +34,15 @@
             {{ blok.manage_cookies }}
           </button>
         </nav>
+        <div class="mt-8 text-center text-base text-gray-50">
+          Created with ❤️ by
+          <a
+            href="https://www.prioflux.com/"
+            target="_blank"
+            class="hover:underline"
+            >Prioflux</a
+          >
+        </div>
       </div>
     </footer>
   </div>
